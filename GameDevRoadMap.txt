@@ -1,0 +1,29 @@
+stage 1 gamedev roadmap:
+   character save/load handling
+   inventory
+   bank
+   woodcutting(idle)
+   firemaking(idle)
+   mining(idle)
+   smithing(idle)
+   fishing(idle)
+   cooking(idle)
+stage 2 make skills more active for better rewards(xp rates):
+   woodcutting(agro)
+   firemaking(agro)
+   mining(agro)
+   smithing(agro)
+   fishing(agro)
+   cooking(agro)
+stage 3 create combat system:
+   chracter vs monster
+   attack(skill)
+   strength(skill)
+   defence(skill)
+   hitpoints(skill)
+stage 4 add loot to monsters:
+   monsters drop bones(item)
+stage 5 add new styles to combat system:
+   range(skill)
+   mage(skill)
+   prayer(skill)
