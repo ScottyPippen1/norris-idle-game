@@ -3,7 +3,7 @@ var wcXp = 0;
 var totalXp = 0;
 var trees = ["tree, oak, teak, yew, magic"];
 // axes value will be index + 1. (bronze = 0 + 1, iron = 1 + 1, etc.)
-var axes = ["bronze", "iron", "steel", "black", "mithril", "adamant", "rune"];
+// var axes = ["bronze", "iron", "steel", "mithril", "adamant", "rune"];
 
 
 function update(id, content) {
@@ -48,7 +48,6 @@ function get_woodcutting_xp(tree) {
 }
 
 function cutWood() {
-    const wcBar = document.getElementById('wcBar');
     if (wcLoop) {
         clearInterval(wcLoop);
         wcLoop = null;
@@ -62,8 +61,7 @@ function cutWood() {
             update_total_xp(xp_gained)
             wcBar.style.width = wcXp + '%';
             wcBar.innerHTML = wcXp + '%';
-
-            update("wcXp", `Woodcutting Experience: ${wcXp}`);
+            update("wcXp", `Woodcutting Experience: ${wcXp}`, + wcBar);
         }, get_game_tick());
     }
 }

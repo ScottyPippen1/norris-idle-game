@@ -34,14 +34,14 @@ function get_fishing_xp(fish_type) {
             break;
         default:
             console.log('invalid fish type - get_fishing_xp()');
-            tree_xp = 0;
+            fish_xp = 0;
             break;
     }
     return fish_xp;
 }
 
 function catchFish() {
-    const fishBar = document.getElementById('fishBar');
+    //const fishBar = document.getElementById('fishBar');
     if (fishLoop) {
         clearInterval(fishLoop);
         fishLoop = null;
@@ -52,7 +52,7 @@ function catchFish() {
             update_total_xp(xp_gained);
             fishBar.style.width = fishXp + '%';
             fishBar.innerHTML = fishXp + '%';
-            update("fishXp", `${fishXp} Fishing Experience`);
+            update("fishXp", `${fishXp} Fishing Experience`, +fishBar);
         }, get_game_tick());
     }
 }

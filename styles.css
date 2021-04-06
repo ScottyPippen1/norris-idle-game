@@ -2,6 +2,7 @@
 	padding: 0;
 	margin: 0;
 	font-family: sans-serif;
+	background-color:beige;
 }
 body {
 	display: flex;
@@ -25,6 +26,48 @@ body {
 	color: #fff;
 }
 
+#firemakingProgress {
+	width: 100%;
+	max-width: 700px;
+	background: #ddd;
+}
+#firemakingBar {
+	width: 0%;
+	height: 40px;
+	line-height: 40px;
+	background: #0088FF;
+	text-align: center;
+	color: #fff;
+}
+
+#miningProgress {
+	width: 100%;
+	max-width: 700px;
+	background: #ddd;
+}
+#miningBar {
+	width: 0%;
+	height: 40px;
+	line-height: 40px;
+	background: #0088FF;
+	text-align: center;
+	color: #fff;
+}
+
+#smithingProgress {
+	width: 100%;
+	max-width: 700px;
+	background: #ddd;
+}
+#smithingBar {
+	width: 0%;
+	height: 40px;
+	line-height: 40px;
+	background: #0088FF;
+	text-align: center;
+	color: #fff;
+}
+
 #fishProgress {
 	width: 100%;
 	max-width: 700px;
@@ -39,10 +82,24 @@ body {
 	color: #fff;
 }
 
+#cookingProgress {
+	width: 100%;
+	max-width: 700px;
+	background: #ddd;
+}
+#cookingBar {
+	width: 0%;
+	height: 40px;
+	line-height: 40px;
+	background: #0088FF;
+	text-align: center;
+	color: #fff;
+}
+
 button {
 	background: #0088FF;
-	display: block;
-	margin: 30px;
+	display: inline;
+	margin: 20px;
 	border: none;
 	outline: none;
 	padding: 10px;

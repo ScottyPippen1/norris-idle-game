@@ -4,33 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>test</title>
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-    <div>
-        <p id="totalXp">Total Experience: 0</p>
-    </div>
-    <div>
-        <p id="wcXp">Woodcutting Experience: 0</p>
-        <div id="wcProgress">
-            <div id="wcBar"></div>
+<body class="text-center">
+    <div class="container">
+        <h1 id="totalXp">Total Experience: 0</h1>
+        <div class="row">
+            <div class="col">
+                <p id="wcXp">Woodcutting Experience: 0</p>
+                <div id="wcProgress">
+                    <div id="wcBar"></div>
+                </div>
+                <button onclick="woodcuttingHandler()">Cut Wood</button>
+            </div>
+            <div class="col">
+                <p id="miningXp">Mining Experience: 0</p>
+                <div id="miningProgress">
+                    <div id="miningBar"></div>
+                </div>
+                <button onclick="miningHandler()">Mine Vein</button>
+            </div>
+            <div class="col">
+                <p id="fishXp">Fishing Experience: 0</p>
+                <div id="fishProgress">
+                    <div id="fishBar"></div>
+                </div>
+                <button onclick="fishingHandler()">Catch Fish</button>
+            </div>
         </div>
-        <button onclick="woodcuttingHandler()">Cut Wood</button>
-    </div>
-    <div>
-        <p id="fishXp">fishXp 0</p>
-        <div id="fishProgress">
-            <div id="fishBar"></div>
+        <div class="row">
+            <div class="col">
+                <p id="firemakingXp">Firemaking Experience: 0</p>
+                <div id="firemakingProgress">
+                    <div id="firemakingBar"></div>
+                </div>
+                <button onclick="firemakingHandler()">Light Log</button>
+            </div>
+            <div class="col">
+                <p id="smithingXp">Smithing Experience: 0</p>
+                <div id="smithingProgress">
+                    <div id="smithingBar"></div>
+                </div>
+                <button onclick="smithingHandler()">Smelt Bar</button>
+            </div>
+            <div class="col">
+                <p id="cookingXp">Cooking Experience: 0</p>
+                <div id="cookingProgress">
+                    <div id="cookingBar"></div>
+                </div>
+                <button onclick="cookingHandler()">Cook Fish</button>
+            </div>
         </div>
-        <button onclick="fishingHandler()">Catch Fish</button>
     </div>
 
     <script src="woodcutting.js" charset="utf-8" type="text/javascript"></script>
+    <script src="firemaking.js" charset="utf-8" type="text/javascript"></script>
+    <script src="mining.js" charset="utf-8" type="text/javascript"></script>
+    <script src="smithing.js" charset="utf-8" type="text/javascript"></script>
     <script src="fishing.js" charset="utf-8" type="text/javascript"></script>
+    <script src="cooking.js" charset="utf-8" type="text/javascript"></script>
     <script src="main.js" charset="utf-8" type="text/javascript"></script>
+
+    <!-- jquery, popper.js, boostrap js-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 </body>
 

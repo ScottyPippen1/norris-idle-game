@@ -2,13 +2,43 @@
 // TODO: split this up into separate files, add skills and include some example categories, start character loading/saving
 //game variables
 
+//save game (game data needs to be stringified)
+// var saveGameLoop = window.setInterval(() => {
+//     localStorage.setItem("idleGameSave", JSON.stringify())
+// }, 15000)
+
+//load saved game
+// var saveGame = JSON.parse(localStorage.getItem("idleGameSave"))
+// if(saveGame !== null){
+//     //game data = saveGame
+// }
+
+
 function woodcuttingHandler() {
     cutWood();
+}
+
+function firemakingHandler() {
+    lightLog();
 }
 
 function fishingHandler() {
     catchFish();
 }
+
+function cookingHandler() {
+    cookFish();
+}
+
+function miningHandler() {
+    mineVein();
+}
+
+function smithingHandler() {
+    smeltBar();
+}
+
+
 
 
 // test function to try and get an rng implementation running for skilling
