@@ -2,15 +2,11 @@
 // TODO: split this up into separate files, add skills and include some example categories, start character loading/saving
 //game variables
 
-//save game (game data needs to be stringified)
-// var saveGameLoop = window.setInterval(() => {
-//     localStorage.setItem("idleGameSave", JSON.stringify())
-// }, 15000)
 
 //load saved game
 // var saveGame = JSON.parse(localStorage.getItem("idleGameSave"))
-// if(saveGame !== null){
-//     //game data = saveGame
+// if (saveGame !== null) {
+//     gameData = saveGame
 // }
 
 
@@ -39,6 +35,14 @@ function smithingHandler() {
 }
 
 
+//save game (game data needs to be stringified)
+// var saveGameLoop = window.setInterval(() => {
+//     localStorage.setItem("idleGameSave", JSON.stringify(gameData))
+// }, 5000)
+
+
+// if (typeof saveGame.wcXp !== "undefined") gameData.wcXp = saveGame.wcXp;
+// if (typeof saveGame.totalXp !== "undefined") gameData.totalXp = saveGame.totalXp;
 
 
 // test function to try and get an rng implementation running for skilling

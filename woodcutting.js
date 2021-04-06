@@ -1,7 +1,14 @@
-var wcLoop;
-var wcXp = 0;
-var totalXp = 0;
-var trees = ["tree, oak, teak, yew, magic"];
+
+var gameData = {
+    wcLoop: null,
+    wcXp: 0,
+    totalXp: 0,
+    trees: ["tree, oak, teak, yew, magic"]
+}
+// var wcLoop: null,
+// var wcXp = 0;
+// var totalXp = 0;
+// var trees = ["tree, oak, teak, yew, magic"];
 // axes value will be index + 1. (bronze = 0 + 1, iron = 1 + 1, etc.)
 // var axes = ["bronze", "iron", "steel", "mithril", "adamant", "rune"];
 
@@ -15,8 +22,8 @@ function get_game_tick() {
 }
 
 function update_total_xp(xp_gained) {
-    totalXp = totalXp + xp_gained;
-    update("totalXp", `Total Experience: ${totalXp} `);
+    gameData.totalXp = gameData.totalXp + xp_gained;
+    update("totalXp", `Total Experience: ${gameData.totalXp} `);
 }
 
 function get_woodcutting_xp(tree) {
@@ -48,21 +55,24 @@ function get_woodcutting_xp(tree) {
 }
 
 function cutWood() {
-    if (wcLoop) {
-        clearInterval(wcLoop);
-        wcLoop = null;
+    if (gameData.wcLoop) {
+        clearInterval(gameData.wcLoop);
+        gameData.wcLoop = null;
     } else {
-        wcLoop = setInterval(() => {
+        gameData.wcLoop = setInterval(() => {
             //var attempt = get_woodcutting_rate(40, 'tree', 20); // level , type of tree, axe level
             var xp_gained = get_woodcutting_xp('tree');
-            wcXp = wcXp + xp_gained;
-
+            gameData.wcXp = gameData.wcXp + xp_gained;
             // visual updates
-            update_total_xp(xp_gained)
-            wcBar.style.width = wcXp + '%';
-            wcBar.innerHTML = wcXp + '%';
-            update("wcXp", `Woodcutting Experience: ${wcXp}`, + wcBar);
+            update_total_xp(xp_gained);
+            wcBar.style.width = gameData.wcXp + '%';
+            wcBar.innerHTML = gameData.wcXp + '%';
+            update("wcXp", `Woodcutting Experience: ${gameData.wcXp}`, + wcBar);
         }, get_game_tick());
     }
 }
+
+// var saveGameLoop = window.setInterval(() => {
+//     localStorage.setItem("idleGameSave", JSON.stringify(gameData))
+// }, 5000)
 
