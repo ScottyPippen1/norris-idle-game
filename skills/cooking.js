@@ -1,7 +1,8 @@
-var cookingLoop;
-var cookingXp = 0;
-var totalXp = 0;
-var fish = ["shrimp, trout, swordfish, monkfish"];
+var cookingData = {
+    cookingLoop: null,
+    cookingXp: 0,
+    fish: ["shrimp, trout, swordfish, monkfish"]
+}
 
 function update(id, content) {
     document.getElementById(id).innerHTML = content;
@@ -9,11 +10,6 @@ function update(id, content) {
 //need to return an interval
 function get_game_tick() {
     return 3000;
-}
-
-function update_total_xp(xp_gained) {
-    totalXp = totalXp + xp_gained;
-    update("totalXp", `Total Experience: ${totalXp} `);
 }
 
 function get_cooking_xp(fish_type) {
@@ -41,18 +37,17 @@ function get_cooking_xp(fish_type) {
 }
 
 function cookFish() {
-    //const cookBar = document.getElementById('fishBar');
-    if (cookingLoop) {
-        clearInterval(cookingLoop);
-        cookingLoop = null;
+    if (cookingData.cookingLoop) {
+        clearInterval(cookingData.cookingLoop);
+        cookingData.cookingLoop = null;
     } else {
-        cookingLoop = setInterval(() => {
+        cookingData.cookingLoop = setInterval(() => {
             var xp_gained = get_cooking_xp('shrimp');
-            cookingXp = cookingXp + xp_gained;
+            cookingData.cookingXp = cookingData.cookingXp + xp_gained;
             update_total_xp(xp_gained);
-            cookingBar.style.width = cookingXp + '%';
-            cookingBar.innerHTML = cookingXp + '%';
-            update("cookingXp", `${cookingXp} Cooking Experience`, +cookingBar);
+            cookingBar.style.width = cookingData.cookingXp + '%';
+            cookingBar.innerHTML = cookingData.cookingXp + '%';
+            update("cookingXp", `${cookingData.cookingXp} Cooking Experience`, +cookingBar);
         }, get_game_tick());
     }
 }

@@ -1,7 +1,8 @@
-var fishLoop;
-var fishXp = 0;
-var totalXp = 0;
-var fish = ["shrimp, trout, swordfish, monkfish"];
+var fishData = {
+    fishLoop: null,
+    fishXp: 0,
+    fish: ["shrimp, trout, swordfish, monkfish"]
+}
 
 function update(id, content) {
     document.getElementById(id).innerHTML = content;
@@ -9,11 +10,6 @@ function update(id, content) {
 //need to return an interval
 function get_game_tick() {
     return 3000;
-}
-
-function update_total_xp(xp_gained) {
-    totalXp = totalXp + xp_gained;
-    update("totalXp", `Total Experience: ${totalXp} `);
 }
 
 function get_fishing_xp(fish_type) {
@@ -41,18 +37,17 @@ function get_fishing_xp(fish_type) {
 }
 
 function catchFish() {
-    //const fishBar = document.getElementById('fishBar');
-    if (fishLoop) {
-        clearInterval(fishLoop);
-        fishLoop = null;
+    if (fishData.fishLoop) {
+        clearInterval(fishData.fishLoop);
+        fishData.fishLoop = null;
     } else {
-        fishLoop = setInterval(() => {
+        fishData.fishLoop = setInterval(() => {
             var xp_gained = get_fishing_xp('shrimp');
-            fishXp = fishXp + xp_gained;
+            fishData.fishXp = fishData.fishXp + xp_gained;
             update_total_xp(xp_gained);
-            fishBar.style.width = fishXp + '%';
-            fishBar.innerHTML = fishXp + '%';
-            update("fishXp", `${fishXp} Fishing Experience`, +fishBar);
+            fishBar.style.width = fishData.fishXp + '%';
+            fishBar.innerHTML = fishData.fishXp + '%';
+            update("fishXp", `${fishData.fishXp} Fishing Experience`, +fishBar);
         }, get_game_tick());
     }
 }

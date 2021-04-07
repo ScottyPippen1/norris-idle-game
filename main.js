@@ -1,16 +1,29 @@
 
 // TODO: split this up into separate files, add skills and include some example categories, start character loading/saving
 //game variables
-
+var gameData = {
+    totalXp: 0
+}
 
 //load saved game
-// var saveGame = JSON.parse(localStorage.getItem("idleGameSave"))
-// if (saveGame !== null) {
-//     gameData = saveGame
-// }
+var saveGame = JSON.parse(localStorage.getItem("idleGameSave"))
+if (saveGame !== null) {
+    //gameData = saveGame //saves to local storage
+    localStorage.removeItem("idleSaveGame") //clears local storage
+}
 
+//save game (game data needs to be stringified)
+var saveGameLoop = window.setInterval(() => {
+    localStorage.setItem("idleGameSave", JSON.stringify(gameData))
+}, 5000)
+
+function update_total_xp(xp_gained) {
+    gameData.totalXp = gameData.totalXp + xp_gained;
+    update("totalXp", `Total Experience: ${gameData.totalXp} `);
+}
 
 function woodcuttingHandler() {
+    //move_bar();
     cutWood();
 }
 
@@ -35,10 +48,7 @@ function smithingHandler() {
 }
 
 
-//save game (game data needs to be stringified)
-// var saveGameLoop = window.setInterval(() => {
-//     localStorage.setItem("idleGameSave", JSON.stringify(gameData))
-// }, 5000)
+
 
 
 // if (typeof saveGame.wcXp !== "undefined") gameData.wcXp = saveGame.wcXp;

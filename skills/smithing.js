@@ -1,7 +1,8 @@
-var smithingLoop;
-var smithingXp = 0;
-var totalXp = 0;
-var bars = ["bronze, iron, steel, mithril, adamant, runite"];
+var smithingData = {
+    smithingLoop: null,
+    smithingXp: 0,
+    bars: ["bronze, iron, steel, mithril, adamant, runite"]
+}
 
 function update(id, content) {
     document.getElementById(id).innerHTML = content;
@@ -9,11 +10,6 @@ function update(id, content) {
 //need to return an interval
 function get_game_tick() {
     return 3000;
-}
-
-function update_total_xp(xp_gained) {
-    totalXp = totalXp + xp_gained;
-    update("totalXp", `Total Experience: ${totalXp} `);
 }
 
 function get_smithing_xp(bar) {
@@ -48,19 +44,18 @@ function get_smithing_xp(bar) {
 }
 
 function smeltBar() {
-    if (smithingLoop) {
-        clearInterval(smithingLoop);
-        smithingLoop = null;
+    if (smithingData.smithingLoop) {
+        clearInterval(smithingData.smithingLoop);
+        smithingData.smithingLoop = null;
     } else {
-        smithingLoop = setInterval(() => {
+        smithingData.smithingLoop = setInterval(() => {
             var xp_gained = get_smithing_xp('bronze');
-            smithingXp = smithingXp + xp_gained;
-
+            smithingData.smithingXp = smithingData.smithingXp + xp_gained;
             // visual updates
             update_total_xp(xp_gained)
-            smithingBar.style.width = smithingXp + '%';
-            smithingBar.innerHTML = smithingXp + '%';
-            update("smithingXp", `Smithing Experience: ${smithingXp}`, + smithingBar);
+            smithingBar.style.width = smithingData.smithingXp + '%';
+            smithingBar.innerHTML = smithingData.smithingXp + '%';
+            update("smithingXp", `Smithing Experience: ${smithingData.smithingXp}`, + smithingBar);
         }, get_game_tick());
     }
 }

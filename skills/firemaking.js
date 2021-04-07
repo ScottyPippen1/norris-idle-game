@@ -1,7 +1,8 @@
-var firemakingLoop;
-var firemakingXp = 0;
-var totalXp = 0;
-var logs = ["logs, oak, teak, yew, magic"];
+var firemakingData = {
+    firemakingLoop: null,
+    firemakingXp: 0,
+    logs: ["logs, oak, teak, yew, magic"]
+}
 
 function update(id, content) {
     document.getElementById(id).innerHTML = content;
@@ -9,11 +10,6 @@ function update(id, content) {
 //need to return an interval
 function get_game_tick() {
     return 3000;
-}
-
-function update_total_xp(xp_gained) {
-    totalXp = totalXp + xp_gained;
-    update("totalXp", `Total Experience: ${totalXp} `);
 }
 
 function get_firemaking_xp(log_type) {
@@ -43,18 +39,17 @@ function get_firemaking_xp(log_type) {
 }
 
 function lightLog() {
-    //const firemakingBar = document.getElementById('firemakingBar');
-    if (firemakingLoop) {
-        clearInterval(firemakingLoop);
-        firemakingLoop = null;
+    if (firemakingData.firemakingLoop) {
+        clearInterval(firemakingData.firemakingLoop);
+        firemakingData.firemakingLoop = null;
     } else {
-        firemakingLoop = setInterval(() => {
+        firemakingData.firemakingLoop = setInterval(() => {
             var xp_gained = get_firemaking_xp('oak');
-            firemakingXp = firemakingXp + xp_gained;
+            firemakingData.firemakingXp = firemakingData.firemakingXp + xp_gained;
             update_total_xp(xp_gained);
-            firemakingBar.style.width = firemakingXp + '%';
-            firemakingBar.innerHTML = firemakingXp + '%';
-            update("firemakingXp", `${firemakingXp} Firemaking Experience`, + firemakingBar);
+            firemakingBar.style.width = firemakingData.firemakingXp + '%';
+            firemakingBar.innerHTML = firemakingData.firemakingXp + '%';
+            update("firemakingXp", `${firemakingData.firemakingXp} Firemaking Experience`, + firemakingBar);
         }, get_game_tick());
     }
 }

@@ -1,10 +1,11 @@
-var miningLoop;
-var miningXp = 0;
-var totalXp = 0;
-var ores = ["copper, tin, iron, coal, mithril, adamant, runite"];
+var miningData = {
+    miningLoop: null,
+    miningXp: 0,
+    ores: ["copper, tin, iron, coal, mithril, adamant, runite"]
+}
+
 // pickaxes value will be index + 1. (bronze = 0 + 1, iron = 1 + 1, etc.)
 // var pickaxes = ["bronze", "iron", "steel", "mithril", "adamant", "rune"];
-
 
 function update(id, content) {
     document.getElementById(id).innerHTML = content;
@@ -12,11 +13,6 @@ function update(id, content) {
 //need to return an interval
 function get_game_tick() {
     return 3000;
-}
-
-function update_total_xp(xp_gained) {
-    totalXp = totalXp + xp_gained;
-    update("totalXp", `Total Experience: ${totalXp} `);
 }
 
 function get_mining_xp(vein) {
@@ -54,20 +50,18 @@ function get_mining_xp(vein) {
 }
 
 function mineVein() {
-    if (miningLoop) {
-        clearInterval(miningLoop);
-        miningLoop = null;
+    if (miningData.miningLoop) {
+        clearInterval(miningData.miningLoop);
+        miningData.miningLoop = null;
     } else {
-        miningLoop = setInterval(() => {
-            //var attempt = get_woodcutting_rate(40, 'tree', 20); // level , type of tree, axe level
+        miningData.miningLoop = setInterval(() => {
             var xp_gained = get_mining_xp('iron');
-            miningXp = miningXp + xp_gained;
-
+            miningData.miningXp = miningData.miningXp + xp_gained;
             // visual updates
             update_total_xp(xp_gained)
-            miningBar.style.width = miningXp + '%';
-            miningBar.innerHTML = miningXp + '%';
-            update("miningXp", `Mining Experience: ${miningXp}`, + miningBar);
+            miningBar.style.width = miningData.miningXp + '%';
+            miningBar.innerHTML = miningData.miningXp + '%';
+            update("miningXp", `Mining Experience: ${miningData.miningXp}`, + miningBar);
         }, get_game_tick());
     }
 }
