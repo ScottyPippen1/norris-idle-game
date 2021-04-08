@@ -23,7 +23,7 @@ function update_total_xp(xp_gained) {
 }
 
 function woodcuttingHandler() {
-    //move_bar();
+    move_bar();
     cutWood();
 }
 

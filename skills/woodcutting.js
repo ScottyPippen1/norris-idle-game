@@ -1,9 +1,10 @@
 
 var wcData = {
+    progBarLoop: null,
     wcLoop: null,
     wcXp: 0,
     trees: ["tree, oak, teak, yew, magic"],
-    //i: 0
+    i: 0
 }
 
 // axes value will be index + 1. (bronze = 0 + 1, iron = 1 + 1, etc.)
@@ -50,6 +51,31 @@ function get_game_tick() {
 
 //}
 
+function move_bar() {
+    if (wcData.progBarLoop) {
+        clearInterval(wcData.progBarLoop);
+        wcData.progBarLoop = null;
+    } else {
+        wcData.progBarLoop = setInterval(() => {
+            if (wcData.i == 0) {
+                wcData.i = 1;
+                let elem = document.getElementById("wcBar");
+                let width = 1;
+                wcData.progBarLoop = setInterval(() => {
+                    if (width >= 100) {
+                        clearInterval(wcData.progBarLoop);
+                        wcData.i = 0;
+                    } else {
+                        width++;
+                        elem.innerHTML = width + "%";
+                        elem.style.width = width + "%";
+                    }
+                }, 30);
+            }
+        }, 30);
+    }
+}
+
 
 function get_woodcutting_xp(tree) {
     // determine a weight for tree_weight
@@ -86,18 +112,20 @@ function cutWood() {
     } else {
 
         wcData.wcLoop = setInterval(() => {
-            let elem = document.getElementById("wcBar");
-            elem.innerHTML = "0%";
-            elem.style.width = get_game_tick();
+            // let elem = document.getElementById("wcBar");
+            // elem.innerHTML = "0%";
+            // elem.style.width = get_game_tick();
 
-            for (i = 0; i < 3000; i++) {
-                let progress = i / get_game_tick() * 100;
-                elem.innerHTML = progress + "%";
-                elem.style.width = progress + "%";
-            }
+            // for (i = 0; i < 3000; i++) {
+            //     let progress = i / get_game_tick() * 100;
+            //     elem.innerHTML = progress + "%";
+            //     elem.style.width = progress + "%";
+            // }
             //var attempt = get_woodcutting_rate(40, 'tree', 20); // level , type of tree, axe level
             let xp_gained = get_woodcutting_xp('tree');
             wcData.wcXp = wcData.wcXp + xp_gained;
+            // elem.innerHTML = wcData.wcXp + "%";
+            // elem.innerHTML = wcData.wcXp + "%";
             // visual updates
             update_total_xp(xp_gained);
             update("wcXp", `Woodcutting Experience: ${wcData.wcXp}`);
