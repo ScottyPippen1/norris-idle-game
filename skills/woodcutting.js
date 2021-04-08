@@ -3,7 +3,7 @@ var wcData = {
     wcLoop: null,
     wcXp: 0,
     trees: ["tree, oak, teak, yew, magic"],
-    // i: 0
+    //i: 0
 }
 
 // axes value will be index + 1. (bronze = 0 + 1, iron = 1 + 1, etc.)
@@ -21,6 +21,7 @@ function get_game_tick() {
 //     wcBar.style.width = '0%';
 //     update("wcBar", wcBar);
 // }
+
 
 // function move_bar() {
 //     if (wcData.i == 0) {
@@ -83,20 +84,25 @@ function cutWood() {
         clearInterval(wcData.wcLoop);
         wcData.wcLoop = null;
     } else {
-        // reset_progress();
-        // move_bar();
-        wcData.wcLoop = setInterval(() => {
 
+        wcData.wcLoop = setInterval(() => {
+            let elem = document.getElementById("wcBar");
+            elem.innerHTML = "0%";
+            elem.style.width = get_game_tick();
+
+            for (i = 0; i < 3000; i++) {
+                let progress = i / get_game_tick() * 100;
+                elem.innerHTML = progress + "%";
+                elem.style.width = progress + "%";
+            }
             //var attempt = get_woodcutting_rate(40, 'tree', 20); // level , type of tree, axe level
-            var xp_gained = get_woodcutting_xp('tree');
+            let xp_gained = get_woodcutting_xp('tree');
             wcData.wcXp = wcData.wcXp + xp_gained;
             // visual updates
             update_total_xp(xp_gained);
-            wcBar.style.width = wcData.wcXp + '%';
-            wcBar.innerHTML = wcData.wcXp + '%';
-
             update("wcXp", `Woodcutting Experience: ${wcData.wcXp}`);
         }, get_game_tick());
+
     }
 }
 
