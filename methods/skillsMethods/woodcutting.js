@@ -10,46 +10,10 @@ var wcData = {
 // axes value will be index + 1. (bronze = 0 + 1, iron = 1 + 1, etc.)
 // var axes = ["bronze", "iron", "steel", "mithril", "adamant", "rune"];
 
-function update(id, content) {
-    document.getElementById(id).innerHTML = content;
-}
 //need to return an interval
 function get_game_tick() {
     return 3000;
 }
-
-// function reset_progress() {
-//     wcBar.style.width = '0%';
-//     update("wcBar", wcBar);
-// }
-
-
-// function move_bar() {
-//     if (wcData.i == 0) {
-//         wcData.i = 1;
-//         var elem = document.getElementById("wcBar");
-//         var width = 0;
-//         var id = setInterval(frame, 10);
-//         function frame() {
-//             if (width >= 100) {
-//                 width = 0;
-//                 clearInterval(id);
-//                 wcData.i = 0;
-//             } else {
-//                 width++;
-//                 elem.style.width = width + "%";
-//             }
-//         }
-//     }
-// }
-
-// wcBar.style.width = "0%";
-
-// setTimeout(() => {
-//     wcBar.style.width = "100%";
-// });
-
-//}
 
 function move_bar() {
     if (wcData.progBarLoop) {

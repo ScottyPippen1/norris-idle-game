@@ -1,9 +1,11 @@
 
 // TODO: split this up into separate files, add skills and include some example categories, start character loading/saving
-//game variables
-var gameData = {
-    totalXp: 0
-}
+
+//main game loop
+// let mainGameLoop = window.setInterval(() => {
+//     diff = Date.now() - gameData.lastTick;
+//     gameData.lastTick = Date.now()
+// }, 1000)
 
 //load saved game
 var saveGame = JSON.parse(localStorage.getItem("idleGameSave"))
@@ -21,35 +23,6 @@ function update_total_xp(xp_gained) {
     gameData.totalXp = gameData.totalXp + xp_gained;
     update("totalXp", `Total Experience: ${gameData.totalXp} `);
 }
-
-function woodcuttingHandler() {
-    move_bar();
-    cutWood();
-}
-
-function firemakingHandler() {
-    lightLog();
-}
-
-function fishingHandler() {
-    catchFish();
-}
-
-function cookingHandler() {
-    cookFish();
-}
-
-function miningHandler() {
-    mineVein();
-}
-
-function smithingHandler() {
-    smeltBar();
-}
-
-
-
-
 
 // if (typeof saveGame.wcXp !== "undefined") gameData.wcXp = saveGame.wcXp;
 // if (typeof saveGame.totalXp !== "undefined") gameData.totalXp = saveGame.totalXp;
@@ -106,21 +79,5 @@ function smithingHandler() {
 
 // }
 
-
-//progress bar
-/*   const myBar = document.getElementById('myBar');
-   var width = 0;
-   var timeInt = setInterval(frame, 3000);
-   //progress bar function
-   function frame() {
-       if (width >= 100) {
-           clearInterval(timeInt);
-       } else {
-           width++;
-           myBar.style.width = width + '%';
-           myBar.innerHTML = width + '%';
-       }
-   }
-*/
 
 
