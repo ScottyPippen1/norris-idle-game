@@ -1,5 +1,7 @@
-
-// TODO: split this up into separate files, add skills and include some example categories, start character loading/saving
+let playerData = {
+    activeSkill: [],
+    actionIntervalSpeed: 0
+}
 
 //main game loop
 // let mainGameLoop = window.setInterval(() => {
@@ -18,6 +20,11 @@ if (saveGame !== null) {
 var saveGameLoop = window.setInterval(() => {
     localStorage.setItem("idleGameSave", JSON.stringify(gameData))
 }, 5000)
+
+//updates html
+function update(id, content) {
+    document.getElementById(id).innerHTML = content;
+}
 
 function update_total_xp(xp_gained) {
     gameData.totalXp = gameData.totalXp + xp_gained;

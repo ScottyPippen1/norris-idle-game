@@ -1,16 +1,35 @@
+//need to return an interval
 
-//update ui data
-function update(id, content) {
-    document.getElementById(id).innerHTML = content;
+function active_skill() {
+    player = playerData.activeSkill;
+    update("activeSkill", `Active skill: ${player}`);
+    console.log(player);
 }
 
-//need to return an interval
-function get_game_tick() {
-    return 3000;
+function get_interval_speed() {
+    intervalSpeed = playerData.actionIntervalSpeed;
+    console.log(intervalSpeed);
+    return intervalSpeed;
+
+}
+
+function execute_woodcutting() {
+    if (playerData.activeSkill == skillsData.skills[0] || playerData.activeSkill != null) {
+        clearTimeout(woodcuttingHandler());
+        return;
+    }
+    playerData.activeSkill = skillsData.skills[0].name;
+    playerData.actionIntervalSpeed = skillsData.skills[0].baseIntervalSpeed;
+    active_skill();
+    get_woodcutting_xp(tree);
+    get_interval_speed();
+    // start_task
+    setTimeout(woodcuttingHandler, get_interval_speed());
+
 }
 
 function woodcuttingHandler() {
-    move_bar();
+    // move_bar();
     cutWood();
 }
 
