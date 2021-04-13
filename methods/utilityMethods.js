@@ -6,26 +6,24 @@ function active_skill() {
     console.log(player);
 }
 
-function get_interval_speed() {
-    intervalSpeed = playerData.actionIntervalSpeed;
-    console.log(intervalSpeed);
-    return intervalSpeed;
+function get_interval_speed(skill_id) {
+    playerData.actionIntervalSpeed = skillsData.skills[skill_id].baseIntervalSpeed;
+    console.log(playerData.actionIntervalSpeed);
+    return playerData.actionIntervalSpeed;
 
 }
 
-function execute_woodcutting() {
-    if (playerData.activeSkill == skillsData.skills[0] || playerData.activeSkill != null) {
-        clearTimeout(woodcuttingHandler());
+function execute_woodcutting(button_clicked) {
+    let skill = playerData.activeSkill;
+    //stops task if button clicked while active
+    if (button_clicked == 0 && skill == skillsData.skills[0].name && skill != null) {
+        //clears active task
+        clearTimeout(task);
+        //clears active skill
+        playerData.activeSkill = "";
         return;
     }
-    playerData.activeSkill = skillsData.skills[0].name;
-    playerData.actionIntervalSpeed = skillsData.skills[0].baseIntervalSpeed;
-    active_skill();
-    get_woodcutting_xp(tree);
-    get_interval_speed();
-    // start_task
-    setTimeout(woodcuttingHandler, get_interval_speed());
-
+    task = setTimeout(woodcuttingHandler, get_interval_speed(0));
 }
 
 function woodcuttingHandler() {

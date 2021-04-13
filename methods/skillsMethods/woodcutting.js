@@ -86,7 +86,7 @@ function cutWood() {
     update_total_xp(xp_gained);
     update("wcXp", `Woodcutting Experience: ${wcData.wcXp}`);
     // }, get_interval_speed());
-
+    execute_woodcutting(1);
     // }
 }
 

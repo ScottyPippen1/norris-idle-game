@@ -3,6 +3,8 @@ let playerData = {
     actionIntervalSpeed: 0
 }
 
+let task;
+
 //main game loop
 // let mainGameLoop = window.setInterval(() => {
 //     diff = Date.now() - gameData.lastTick;
