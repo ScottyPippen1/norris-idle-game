@@ -14,20 +14,20 @@ function get_interval_speed(skill_id) {
 }
 
 function execute_woodcutting(button_clicked) {
-    let skill = playerData.activeSkill;
+    let stopCutting = button_clicked == 0 && task != null;
     //stops task if button clicked while active
-    if (button_clicked == 0 && skill == skillsData.skills[0].name && skill != null) {
+    if (stopCutting) {
         //clears active task
         clearTimeout(task);
         //clears active skill
         playerData.activeSkill = "";
+        task = null;
         return;
     }
     task = setTimeout(woodcuttingHandler, get_interval_speed(0));
 }
 
 function woodcuttingHandler() {
-    // move_bar();
     cutWood();
 }
 

@@ -27,3 +27,42 @@ const skillsData = {
         },
     ]
 }
+
+const woodcuttingTreeData = {
+    trees: [
+        {
+            type: "tree",
+            xp: 25,
+            intervalSpeed: 3000
+        },
+        {
+            type: "oak",
+            xp: 37.5,
+            intervalSpeed: 3500
+        },
+        {
+            type: "willow",
+            xp: 67.5,
+            intervalSpeed: 4000
+        },
+        {
+            type: "maple",
+            xp: 100,
+            intervalSpeed: 4500
+        },
+        {
+            type: "yew",
+            xp: 175,
+            intervalSpeed: 5500
+        },
+        {
+            type: "magic",
+            xp: 250,
+            intervalSpeed: 7500
+        },
+    ]
+}
+
+// const skillLevelMilestones = {
+//     level: []
+// }

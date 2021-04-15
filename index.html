@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>test</title>
-    <!-- Bootstrap css-->
+    <!-- Jquery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Bootstrap css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
@@ -19,10 +21,11 @@
         <div class="row">
             <div class="col">
                 <p id="wcXp">Woodcutting Experience: 0</p>
-                <div id="wcProgress">
-                    <div id="wcBar"></div>
+                <div class="progress" style="height: 30px;">
+                    <div id="moving-progress-bar" class="progress-bar bg-info progress-bar" role="progressbar"
+                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <button onclick="execute_woodcutting(0)">Cut Wood</button>
+                <button class="cutWoodButton" onclick="execute_woodcutting(0)">Cut Wood</button>
             </div>
             <div class="col">
                 <p id="miningXp">Mining Experience: 0</p>
@@ -74,6 +77,9 @@
     <script src="entities/gameData.js" charset="utf-8" type="text/javascript"></script>
     <script src="methods/utilityMethods.js" charset="utf-8" type="text/javascript"></script>
     <script src="main.js" charset="utf-8" type="text/javascript"></script>
+
+    <!-- jquery functions -->
+    <script src="jqueryUI.js" charset="utf-8" type="text/javascript"></script>
 
     <!-- jquery, popper.js, boostrap js-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

@@ -11,13 +11,25 @@ body {
 	height: 100vh;
 	flex-direction: column;
 }
+/*progress bar animation*/
+.notransition {
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	-ms-transition: none !important;
+	transition: none !important;
+  }
 
-#wcProgress {
+#moving-progress-bar {
+	transition: unset;
+}
+
+.wcProgress {
 	width: 100%;
 	max-width: 700px;
 	background: #ddd;
 }
-#wcBar {
+.wcBar {
 	width: 0%;
 	height: 40px;
 	line-height: 40px;

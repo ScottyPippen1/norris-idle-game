@@ -3,6 +3,7 @@ let playerData = {
     actionIntervalSpeed: 0
 }
 
+//global variables
 let task;
 
 //main game loop
