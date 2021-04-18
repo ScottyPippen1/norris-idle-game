@@ -4,13 +4,20 @@ function active_skill() {
     player = playerData.activeSkill;
     update("activeSkill", `Active skill: ${player}`);
     console.log(player);
+    return player;
 }
 
-function get_interval_speed(skill_id) {
-    playerData.actionIntervalSpeed = skillsData.skills[skill_id].baseIntervalSpeed;
-    console.log(playerData.actionIntervalSpeed);
-    return playerData.actionIntervalSpeed;
+function get_interval_speed(tree_id) {
 
+    playerData.actionIntervalSpeed = woodcuttingTreeData.trees[tree_id].intervalSpeed;
+    console.log("interval speed: " + playerData.actionIntervalSpeed);
+    return playerData.actionIntervalSpeed;
+}
+
+function get_selected_tree(tree_id) {
+    selectedTree = tree_id;
+    console.log(selectedTree);
+    return selectedTree;
 }
 
 function execute_woodcutting(button_clicked) {
@@ -20,11 +27,11 @@ function execute_woodcutting(button_clicked) {
         //clears active task
         clearTimeout(task);
         //clears active skill
-        playerData.activeSkill = "";
+        //player = null;
         task = null;
         return;
     }
-    task = setTimeout(woodcuttingHandler, get_interval_speed(0));
+    task = setTimeout(woodcuttingHandler, get_interval_speed(selectedTree));
 }
 
 function woodcuttingHandler() {

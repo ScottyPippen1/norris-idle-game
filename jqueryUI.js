@@ -17,14 +17,14 @@ $(document).ready(() => {
                     $('#moving-progress-bar').addClass("notransition");
                     $('#moving-progress-bar').attr('style', "width: 0%");
                 }
-            }, get_interval_speed(0) / 100);
+            }, get_interval_speed(selectedTree) / 100);
         } else {
             clearInterval(interval);
             interval = null;
             progressed = 0;
             $('#moving-progress-bar').addClass("notransition");
             $('#moving-progress-bar').attr('style', "width: 0%");
-            $('#moving-progress-bar').text(0 + "%");
+            $('#moving-progress-bar').text(progressed + "%");
         }
 
     });

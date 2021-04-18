@@ -5,6 +5,7 @@ let playerData = {
 
 //global variables
 let task;
+let selectedTree;
 
 //main game loop
 // let mainGameLoop = window.setInterval(() => {
