@@ -1,68 +1,59 @@
 var miningData = {
-    miningLoop: null,
     miningXp: 0,
-    ores: ["copper, tin, iron, coal, mithril, adamant, runite"]
+    selectedVein: []
 }
 
-// pickaxes value will be index + 1. (bronze = 0 + 1, iron = 1 + 1, etc.)
-// var pickaxes = ["bronze", "iron", "steel", "mithril", "adamant", "rune"];
-
-function update(id, content) {
-    document.getElementById(id).innerHTML = content;
-}
-//need to return an interval
-function get_game_tick() {
-    return 3000;
+function get_interval_speed(vein_id) {
+    // sets interval speed for based on type of vein
+    playerData.actionIntervalSpeed = miningVeinData.veins[vein_id].intervalSpeed;
+    console.log("interval speed: " + playerData.actionIntervalSpeed);
+    return playerData.actionIntervalSpeed;
 }
 
-function get_mining_xp(vein) {
-    // determine a weight for tree_weight
-    var vein_xp = null;
-    switch (vein) {
-        case 'copper':
-            vein_xp = 25;
-            break;
-        case 'tin':
-            vein_xp = 25;
-            break;
-        case 'iron':
-            vein_xp = 50;
-            break;
-        case 'coal':
-            vein_xp = 65;
-            break;
-        case 'mithril':
-            vein_xp = 80;
-            break;
-        case 'adamant':
-            vein_xp = 95;
-            break;
-        case 'rune':
-            vein_xp = 115;
-            break;
-        default:
-            console.log('invalid vein type - get_mining_xp()');
-            vein_xp = 0;
-            break;
+function get_selected_vein(vein_id) {
+    // sets selected vein to mine
+    selectedVein = vein_id;
+    console.log(selectedVein);
+    return selectedVein;
+}
+
+function execute_mining(button_clicked) {
+    // sets active skill
+    playerData.activeSkill = skillsData.skills[2].name;
+
+    // checks if a tree is selected to cut
+    if (selectedVein == null) {
+        alert("Select a vein to mine");
+        return;
     }
 
-    return vein_xp
+    // stops task if button clicked while active
+    let stopMining = button_clicked == 0 && task != null;
+    if (stopMining) {
+        // clears active task
+        clearTimeout(task);
+
+        // clears active skill
+        playerData.activeSkill = "";
+
+        active_skill();
+        task = null;
+        return;
+    }
+    active_skill();
+    // task to mine vein if no task is running
+    task = setTimeout(miningHandler, get_interval_speed(selectedVein));
 }
 
 function mineVein() {
-    if (miningData.miningLoop) {
-        clearInterval(miningData.miningLoop);
-        miningData.miningLoop = null;
-    } else {
-        miningData.miningLoop = setInterval(() => {
-            var xp_gained = get_mining_xp('iron');
-            miningData.miningXp = miningData.miningXp + xp_gained;
-            // visual updates
-            update_total_xp(xp_gained)
-            miningBar.style.width = miningData.miningXp + '%';
-            miningBar.innerHTML = miningData.miningXp + '%';
-            update("miningXp", `Mining Experience: ${miningData.miningXp}`, + miningBar);
-        }, get_game_tick());
-    }
+    // determines how much xp is incremented per action based on type of vein selected
+    let xp_gained = miningVeinData.veins[selectedVein].xp;
+
+    miningData.miningXp = miningData.miningXp + xp_gained;
+    // visual updates
+    update_total_xp(xp_gained);
+    update("miningXp", `Mining Experience: ${miningData.miningXp}`);
+    execute_mining(1);
 }
+
 

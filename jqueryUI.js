@@ -28,4 +28,33 @@ $(document).ready(() => {
         }
 
     });
+
+    //minevein button click function
+    $('.mineVeinButton').click(() => {
+        $('#moving-progress-bar-mining').removeClass("notransition");
+        let progressed = 0;
+        if (!interval) {
+            interval = setInterval(() => {
+                progressed += 1;
+                $('#moving-progress-bar-mining')
+                    .css("width", progressed + "%")
+                    .attr("aria-valuenow", progressed)
+                    .text(progressed + "%");
+
+                if (progressed >= 100) {
+                    progressed = 0;
+                    $('#moving-progress-bar-mining').addClass("notransition");
+                    $('#moving-progress-bar-mining').attr('style', "width: 0%");
+                }
+            }, get_interval_speed(selectedVein) / 100);
+        } else {
+            clearInterval(interval);
+            interval = null;
+            progressed = 0;
+            $('#moving-progress-bar-mining').addClass("notransition");
+            $('#moving-progress-bar-mining').attr('style', "width: 0%");
+            $('#moving-progress-bar-mining').text(progressed + "%");
+        }
+
+    });
 });

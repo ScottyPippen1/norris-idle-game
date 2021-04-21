@@ -40,10 +40,23 @@
             </div>
             <div class="col">
                 <p id="miningXp">Mining Experience: 0</p>
-                <div id="miningProgress">
-                    <div id="miningBar"></div>
+                <div class="progress" style="height: 30px;">
+                    <div id="moving-progress-bar-mining" class="progress-bar bg-info progress-bar" role="progressbar"
+                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <button onclick="miningHandler()">Mine Vein</button>
+                <button class="mineVeinButton" onclick="execute_mining(0)">Mine Vein</button>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select Vein Type
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" onclick="get_selected_vein(0)" type="button">Copper Vein</button>
+                        <button class="dropdown-item" onclick="get_selected_vein(1)" type="button">Tin Vein</button>
+                        <button class="dropdown-item" onclick="get_selected_vein(2)" type="button">Iron Vein</button>
+                        <button class="dropdown-item" onclick="get_selected_vein(2)" type="button">Coal Vein</button>
+                    </div>
+                </div>
             </div>
             <div class="col">
                 <p id="fishXp">Fishing Experience: 0</p>

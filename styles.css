@@ -24,6 +24,10 @@ body {
 	transition: unset;
 }
 
+#moving-progress-bar-mining {
+	transition: unset;
+}
+
 .wcProgress {
 	width: 100%;
 	max-width: 700px;
