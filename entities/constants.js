@@ -63,6 +63,56 @@ const woodcuttingTreeData = {
     ]
 }
 
+const fishingSpotData = {
+    fish: [
+        {
+            type: "shrimp",
+            xp: 10,
+            intervalSpeed: 3000
+        },
+        {
+            type: "herring",
+            xp: 20,
+            intervalSpeed: 3500
+        },
+        {
+            type: "trout",
+            xp: 35,
+            intervalSpeed: 4000
+        },
+        {
+            type: "salmon",
+            xp: 45,
+            intervalSpeed: 4500
+        },
+        {
+            type: "lobster",
+            xp: 60,
+            intervalSpeed: 5000
+        },
+        {
+            type: "swordfish",
+            xp: 70,
+            intervalSpeed: 5500
+        },
+        {
+            type: "monkfish",
+            xp: 80,
+            intervalSpeed: 6000
+        },
+        {
+            type: "shark",
+            xp: 100,
+            intervalSpeed: 7000
+        },
+        {
+            type: "angler",
+            xp: 125,
+            intervalSpeed: 8000
+        }
+    ]
+}
+
 const miningVeinData = {
     veins: [
         {

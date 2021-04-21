@@ -20,11 +20,15 @@ body {
 	transition: none !important;
   }
 
-#moving-progress-bar {
+#moving-progress-bar-woodcutting {
 	transition: unset;
 }
 
 #moving-progress-bar-mining {
+	transition: unset;
+}
+
+#moving-progress-bar-fishing {
 	transition: unset;
 }
 

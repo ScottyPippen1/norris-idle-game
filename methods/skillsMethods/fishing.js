@@ -1,54 +1,59 @@
 var fishData = {
-    fishLoop: null,
     fishXp: 0,
-    fish: ["shrimp, trout, swordfish, monkfish"]
+    selectedFishSpot: []
 }
 
-function update(id, content) {
-    document.getElementById(id).innerHTML = content;
-}
-//need to return an interval
-function get_game_tick() {
-    return 3000;
+function get_interval_speed(fish_spot_id) {
+    // sets interval speed for based on type of fish
+    playerData.actionIntervalSpeed = fishingSpotData.fish[fish_spot_id].intervalSpeed;
+    console.log("interval speed: " + playerData.actionIntervalSpeed);
+    return playerData.actionIntervalSpeed;
 }
 
-function get_fishing_xp(fish_type) {
-    // determine a weight for tree_weight
-    var fish_xp = null;
-    switch (fish_type) {
-        case 'shrimp':
-            fish_xp = 10;
-            break;
-        case 'trout':
-            fish_xp = 50;
-            break;
-        case 'swordfish':
-            fish_xp = 100;
-            break;
-        case 'monkfish':
-            fish_xp = 120;
-            break;
-        default:
-            console.log('invalid fish type - get_fishing_xp()');
-            fish_xp = 0;
-            break;
+function get_selected_fish_spot(fish_spot_id) {
+    // sets selected fish to fish
+    selectedFishSpot = fish_spot_id;
+    console.log(selectedFishSpot);
+    return selectedFishSpot;
+}
+
+function execute_fishing(button_clicked) {
+    // sets active skill
+    playerData.activeSkill = skillsData.skills[1].name;
+
+    // checks if a fish is selected to fish
+    if (selectedFishSpot == null) {
+        alert("Select a fish to catch");
+        return;
     }
-    return fish_xp;
+
+    // stops task if button clicked while active
+    let stopFishing = button_clicked == 0 && task != null;
+    if (stopFishing) {
+        // clears active task
+        clearTimeout(task);
+
+        // clears active skill
+        playerData.activeSkill = "";
+
+        active_skill();
+        task = null;
+        return;
+    }
+    active_skill();
+    // task to catch fish if no task is running
+    task = setTimeout(fishingHandler, get_interval_speed(selectedFishSpot));
 }
 
 function catchFish() {
-    if (fishData.fishLoop) {
-        clearInterval(fishData.fishLoop);
-        fishData.fishLoop = null;
-    } else {
-        fishData.fishLoop = setInterval(() => {
-            var xp_gained = get_fishing_xp('shrimp');
-            fishData.fishXp = fishData.fishXp + xp_gained;
-            update_total_xp(xp_gained);
-            fishBar.style.width = fishData.fishXp + '%';
-            fishBar.innerHTML = fishData.fishXp + '%';
-            update("fishXp", `${fishData.fishXp} Fishing Experience`, +fishBar);
-        }, get_game_tick());
-    }
+    // determines how much xp is incremented per action based on type of fish selected
+    let xp_gained = fishingSpotData.fish[selectedFishSpot].xp;
+
+    fishData.fishXp = fishData.fishXp + xp_gained;
+    // visual updates
+    update_total_xp(xp_gained);
+    update("fishingXp", `Fishing Experience: ${fishData.fishXp}`);
+    execute_fishing(1);
+
 }
 

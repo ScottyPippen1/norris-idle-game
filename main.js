@@ -8,6 +8,7 @@ let playerData = {
 let task;
 let selectedTree = null;
 let selectedVein = null;
+let selectedFishSpot = null;
 
 //main game loop
 // let mainGameLoop = window.setInterval(() => {
