@@ -3,7 +3,6 @@ const skillsData = {
         {
             id: 0,
             name: "Woodcutting",
-            baseIntervalSpeed: 3000
         },
         {
             id: 1,

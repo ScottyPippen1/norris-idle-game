@@ -28,7 +28,7 @@ function execute_woodcutting(button_clicked) {
         return;
     }
 
-    // stops task if button clicked while active
+    // stops task if button clicked while task is active
     let stopCutting = button_clicked == 0 && task != null;
     if (stopCutting) {
         // clears active task
@@ -39,6 +39,7 @@ function execute_woodcutting(button_clicked) {
 
         active_skill();
         task = null;
+        console.log("Stopped Woodcutting");
         return;
     }
     active_skill();

@@ -1,3 +1,4 @@
+// mining data object
 var miningData = {
     miningXp: 0,
     selectedVein: []
@@ -38,6 +39,7 @@ function execute_mining(button_clicked) {
 
         active_skill();
         task = null;
+        console.log("Stopped Mining");
         return;
     }
     active_skill();

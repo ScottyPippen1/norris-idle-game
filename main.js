@@ -10,16 +10,10 @@ let selectedTree = null;
 let selectedVein = null;
 let selectedFishSpot = null;
 
-//main game loop
-// let mainGameLoop = window.setInterval(() => {
-//     diff = Date.now() - gameData.lastTick;
-//     gameData.lastTick = Date.now()
-// }, 1000)
-
 //load saved game
 var saveGame = JSON.parse(localStorage.getItem("idleGameSave"))
 if (saveGame !== null) {
-    //gameData = saveGame //saves to local storage
+    // gameData = saveGame //saves to local storage
     localStorage.removeItem("idleSaveGame") //clears local storage
 }
 
@@ -42,4 +36,8 @@ function update_total_xp(xp_gained) {
 // if (typeof saveGame.wcXp !== "undefined") gameData.wcXp = saveGame.wcXp;
 // if (typeof saveGame.totalXp !== "undefined") gameData.totalXp = saveGame.totalXp;
 
-
+//main game loop
+// let mainGameLoop = window.setInterval(() => {
+//     diff = Date.now() - gameData.lastTick;
+//     gameData.lastTick = Date.now()
+// }, 1000)

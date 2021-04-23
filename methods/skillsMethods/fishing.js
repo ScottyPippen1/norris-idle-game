@@ -1,3 +1,4 @@
+// fishing data object
 var fishData = {
     fishXp: 0,
     selectedFishSpot: []
@@ -38,6 +39,7 @@ function execute_fishing(button_clicked) {
 
         active_skill();
         task = null;
+        console.log("Stopped Fishing");
         return;
     }
     active_skill();
