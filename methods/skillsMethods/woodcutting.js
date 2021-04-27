@@ -1,7 +1,15 @@
 // wc data object
 var wcData = {
     wcXp: 0,
+    wcLvl: 0,
     selectedTree: []
+}
+
+function level_up_woodcutting() {
+    if (wcData.wcXp >= skillLevelMilestones[wcData.wcLvl]) {
+        wcData.wcLvl += 1;
+        console.log("New woodcutting level: " + wcData.wcLvl);
+    }
 }
 
 function get_interval_speed(tree_id) {
@@ -21,6 +29,9 @@ function get_selected_tree(tree_id) {
 function execute_woodcutting(button_clicked) {
     // sets active skill
     playerData.activeSkill = skillsData.skills[0].name;
+
+    level_up_woodcutting();
+    update("wcLvl", `Woodcutting Level: ${wcData.wcLvl}`);
 
     // checks if a tree is selected to cut
     if (selectedTree == null) {

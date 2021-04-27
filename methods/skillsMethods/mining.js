@@ -1,7 +1,15 @@
 // mining data object
 var miningData = {
     miningXp: 0,
+    miningLvl: 0,
     selectedVein: []
+}
+
+function level_up_mining() {
+    if (miningData.miningXp >= skillLevelMilestones[miningData.miningLvl]) {
+        miningData.miningLvl += 1;
+        console.log("New mining level: " + miningData.miningLvl);
+    }
 }
 
 function get_interval_speed(vein_id) {
@@ -21,6 +29,9 @@ function get_selected_vein(vein_id) {
 function execute_mining(button_clicked) {
     // sets active skill
     playerData.activeSkill = skillsData.skills[2].name;
+
+    level_up_mining();
+    update("miningLvl", `Mining Level: ${miningData.miningLvl}`);
 
     // checks if a tree is selected to cut
     if (selectedVein == null) {

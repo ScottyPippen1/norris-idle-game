@@ -1,7 +1,15 @@
 // fishing data object
 var fishData = {
     fishXp: 0,
+    fishLvl: 0,
     selectedFishSpot: []
+}
+
+function level_up_fishing() {
+    if (fishData.fishXp >= skillLevelMilestones[fishData.fishLvl]) {
+        fishData.fishLvl += 1;
+        console.log("New fishing level: " + fishData.fishLvl);
+    }
 }
 
 function get_interval_speed(fish_spot_id) {
@@ -21,6 +29,9 @@ function get_selected_fish_spot(fish_spot_id) {
 function execute_fishing(button_clicked) {
     // sets active skill
     playerData.activeSkill = skillsData.skills[1].name;
+
+    level_up_fishing();
+    update("fishingLvl", `Fishing Level: ${fishData.fishLvl}`);
 
     // checks if a fish is selected to fish
     if (selectedFishSpot == null) {

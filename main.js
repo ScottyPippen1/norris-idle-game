@@ -22,16 +22,7 @@ var saveGameLoop = window.setInterval(() => {
     localStorage.setItem("idleGameSave", JSON.stringify(gameData))
 }, 5000)
 
-//updates html
-function update(id, content) {
-    document.getElementById(id).innerHTML = content;
-}
 
-// updates total xp
-function update_total_xp(xp_gained) {
-    gameData.totalXp = gameData.totalXp + xp_gained;
-    update("totalXp", `Total Experience: ${gameData.totalXp} `);
-}
 
 // if (typeof saveGame.wcXp !== "undefined") gameData.wcXp = saveGame.wcXp;
 // if (typeof saveGame.totalXp !== "undefined") gameData.totalXp = saveGame.totalXp;

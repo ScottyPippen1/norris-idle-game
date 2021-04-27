@@ -9,6 +9,17 @@ function active_skill() {
     console.log(player);
 }
 
+//updates html elements
+function update(id, content) {
+    document.getElementById(id).innerHTML = content;
+}
+
+// updates total xp
+function update_total_xp(xp_gained) {
+    gameData.totalXp = gameData.totalXp + xp_gained;
+    update("totalXp", `Total Experience: ${gameData.totalXp} `);
+}
+
 function woodcuttingHandler() {
     cutWood();
 }
