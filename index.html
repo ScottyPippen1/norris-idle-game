@@ -23,7 +23,12 @@
                 <p id="wcLvl">Woodcutting Level: 0</p>
                 <p id="wcXp">Woodcutting Experience: 0</p>
                 <div class="progress" style="height: 30px;">
-                    <div id="moving-progress-bar-woodcutting" class="progress-bar bg-info progress-bar"
+                    <div id="xp-progress-bar-woodcutting" class="progress-bar bg-success" role="progressbar"
+                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <br>
+                <div class="progress" style="height: 30px;">
+                    <div id="action-interval-bar-woodcutting" class="progress-bar bg-info progress-bar"
                         role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <button class="cutWoodButton" onclick="execute_woodcutting(0)">Cut Wood</button>
@@ -46,7 +51,7 @@
                 <p id="miningLvl">Mining Level: 0</p>
                 <p id="miningXp">Mining Experience: 0</p>
                 <div class="progress" style="height: 30px;">
-                    <div id="moving-progress-bar-mining" class="progress-bar bg-info progress-bar" role="progressbar"
+                    <div id="action-interval-bar-mining" class="progress-bar bg-info progress-bar" role="progressbar"
                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <button class="mineVeinButton" onclick="execute_mining(0)">Mine Vein</button>
@@ -70,7 +75,7 @@
                 <p id="fishingLvl">Fishing Level: 0</p>
                 <p id="fishingXp">Fishing Experience: 0</p>
                 <div class="progress" style="height: 30px;">
-                    <div id="moving-progress-bar-fishing" class="progress-bar bg-info progress-bar" role="progressbar"
+                    <div id="action-interval-bar-fishing" class="progress-bar bg-info progress-bar" role="progressbar"
                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <button class="catchFishButton" onclick="execute_fishing(0)">Catch Fish</button>

@@ -33,6 +33,8 @@ function execute_woodcutting(button_clicked) {
     level_up_woodcutting();
     update("wcLvl", `Woodcutting Level: ${wcData.wcLvl}`);
 
+
+
     // checks if a tree is selected to cut
     if (selectedTree == null) {
         alert("Select a tree to cut");
