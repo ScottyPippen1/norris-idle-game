@@ -1,12 +1,11 @@
 function active_skill() {
     // updates active skill
-    player = playerData.activeSkill;
-    if (!player) {
+    if (!gameData.activeSkill) {
         update("activeSkill", ``);
         return;
     }
-    update("activeSkill", `Active skill: ${player}`);
-    console.log(player);
+    update("activeSkill", `Active skill: ${gameData.activeSkill}`);
+    console.log(gameData.activeSkill);
 }
 
 //updates html elements

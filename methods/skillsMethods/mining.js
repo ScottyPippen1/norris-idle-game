@@ -14,9 +14,9 @@ function level_up_mining() {
 
 function get_interval_speed(vein_id) {
     // sets interval speed for based on type of vein
-    playerData.actionIntervalSpeed = miningVeinData.veins[vein_id].intervalSpeed;
-    console.log("interval speed: " + playerData.actionIntervalSpeed);
-    return playerData.actionIntervalSpeed;
+    gameData.actionIntervalSpeed = miningVeinData.veins[vein_id].intervalSpeed;
+    console.log("interval speed: " + gameData.actionIntervalSpeed);
+    return gameData.actionIntervalSpeed;
 }
 
 function get_selected_vein(vein_id) {
@@ -28,7 +28,7 @@ function get_selected_vein(vein_id) {
 
 function execute_mining(button_clicked) {
     // sets active skill
-    playerData.activeSkill = skillsData.skills[2].name;
+    gameData.activeSkill = skillsData.skills[2].name;
 
     level_up_mining();
     update("miningLvl", `Mining Level: ${miningData.miningLvl}`);
@@ -46,7 +46,7 @@ function execute_mining(button_clicked) {
         clearTimeout(task);
 
         // clears active skill
-        playerData.activeSkill = "";
+        gameData.activeSkill = "";
 
         active_skill();
         task = null;

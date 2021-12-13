@@ -1,22 +1,22 @@
 // wc data object
-var wcData = {
-    wcXp: 0,
-    wcLvl: 0,
-    selectedTree: []
-}
+// var gameData = {
+//     wcXp: 0,
+//     wcLvl: 0,
+//     selectedTree: []
+// }
 
 function level_up_woodcutting() {
-    if (wcData.wcXp >= skillLevelMilestones[wcData.wcLvl]) {
-        wcData.wcLvl += 1;
-        console.log("New woodcutting level: " + wcData.wcLvl);
+    if (gameData.wcXp >= skillLevelMilestones[gameData.wcLvl]) {
+        gameData.wcLvl += 1;
+        console.log("New woodcutting level: " + gameData.wcLvl);
     }
 }
 
 function get_interval_speed(tree_id) {
     // sets interval speed for based on type of tree
-    playerData.actionIntervalSpeed = woodcuttingTreeData.trees[tree_id].intervalSpeed;
-    console.log("interval speed: " + playerData.actionIntervalSpeed);
-    return playerData.actionIntervalSpeed;
+    gameData.actionIntervalSpeed = woodcuttingTreeData.trees[tree_id].intervalSpeed;
+    console.log("interval speed: " + gameData.actionIntervalSpeed);
+    return gameData.actionIntervalSpeed;
 }
 
 function get_selected_tree(tree_id) {
@@ -28,10 +28,10 @@ function get_selected_tree(tree_id) {
 
 function execute_woodcutting(button_clicked) {
     // sets active skill
-    playerData.activeSkill = skillsData.skills[0].name;
+    gameData.activeSkill = skillsData.skills[0].name;
 
     level_up_woodcutting();
-    update("wcLvl", `Woodcutting Level: ${wcData.wcLvl}`);
+    update("wcLvl", `Woodcutting Level: ${gameData.wcLvl}`);
 
 
 
@@ -48,7 +48,7 @@ function execute_woodcutting(button_clicked) {
         clearTimeout(task);
 
         // clears active skill
-        playerData.activeSkill = "";
+        gameData.activeSkill = "";
 
         active_skill();
         task = null;
@@ -64,10 +64,10 @@ function cutWood() {
     // determines how much xp is incremented per action based on type of tree selected
     let xp_gained = woodcuttingTreeData.trees[selectedTree].xp;
 
-    wcData.wcXp = wcData.wcXp + xp_gained;
+    gameData.wcXp = gameData.wcXp + xp_gained;
     // visual updates
     update_total_xp(xp_gained);
-    update("wcXp", `Woodcutting Experience: ${wcData.wcXp}`);
+    update("wcXp", `Woodcutting Experience: ${gameData.wcXp}`);
     execute_woodcutting(1);
 }
 

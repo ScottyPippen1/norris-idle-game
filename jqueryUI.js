@@ -10,8 +10,8 @@ $(document).ready(() => {
         if (!interval) {
             interval = setInterval(() => {
                 progressed += 1;
-                nextWcLvl = skillLevelMilestones[wcData.wcLvl];
-                percentToNextLvl = (wcData.wcXp - skillLevelMilestones[wcData.wcLvl - 1]) / (nextWcLvl - skillLevelMilestones[wcData.wcLvl - 1]) * 100;
+                nextWcLvl = skillLevelMilestones[gameData.wcLvl];
+                percentToNextLvl = (gameData.wcXp - skillLevelMilestones[gameData.wcLvl - 1]) / (nextWcLvl - skillLevelMilestones[gameData.wcLvl - 1]) * 100;
                 $('#action-interval-bar-woodcutting')
                     .css("width", progressed + "%")
                     .attr("aria-valuenow", progressed)
@@ -104,8 +104,8 @@ $(document).ready(() => {
 
     // //update skill progress bar
     // $('#xp-progress-bar-woodcutting').each(function () {
-    //     let nextWcLvl = skillLevelMilestones[wcData.wcLvl + 1];
-    //     let percentToNextLvl = (nextWcLvl - wcData.wcXp) / 100;
+    //     let nextWcLvl = skillLevelMilestones[gameData.wcLvl + 1];
+    //     let percentToNextLvl = (nextWcLvl - gameData.wcXp) / 100;
     //     $('#xp-progress-bar-woodcutting')
     //         .css("width", percentToNextLvl + "%")
     //         .attr("aria-valuenow", percentToNextLvl)

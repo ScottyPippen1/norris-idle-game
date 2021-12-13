@@ -14,9 +14,9 @@ function level_up_fishing() {
 
 function get_interval_speed(fish_spot_id) {
     // sets interval speed for based on type of fish
-    playerData.actionIntervalSpeed = fishingSpotData.fish[fish_spot_id].intervalSpeed;
-    console.log("interval speed: " + playerData.actionIntervalSpeed);
-    return playerData.actionIntervalSpeed;
+    gameData.actionIntervalSpeed = fishingSpotData.fish[fish_spot_id].intervalSpeed;
+    console.log("interval speed: " + gameData.actionIntervalSpeed);
+    return gameData.actionIntervalSpeed;
 }
 
 function get_selected_fish_spot(fish_spot_id) {
@@ -28,7 +28,7 @@ function get_selected_fish_spot(fish_spot_id) {
 
 function execute_fishing(button_clicked) {
     // sets active skill
-    playerData.activeSkill = skillsData.skills[1].name;
+    gameData.activeSkill = skillsData.skills[1].name;
 
     level_up_fishing();
     update("fishingLvl", `Fishing Level: ${fishData.fishLvl}`);
@@ -46,7 +46,7 @@ function execute_fishing(button_clicked) {
         clearTimeout(task);
 
         // clears active skill
-        playerData.activeSkill = "";
+        gameData.activeSkill = "";
 
         active_skill();
         task = null;
