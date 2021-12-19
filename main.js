@@ -1,9 +1,3 @@
-//global variables
-let task;
-let selectedTree = null;
-let selectedVein = null;
-let selectedFishSpot = null;
-
 //load saved game
 var loadGame = JSON.parse(localStorage.getItem('savedGameData'));
 if (loadGame != null) {
@@ -18,11 +12,11 @@ var saveGameLoop = window.setInterval(() => {
     localStorage.setItem('savedGameData', JSON.stringify(gameData));
 }, 1000);
 
-if (typeof loadGame !== "undefined") totalXp = loadGame.totalXp;
-if (typeof loadGame !== "undefined") skills = loadGame.skills;
-if (typeof loadGame !== "undefined") wcXp = loadGame.wcXp;
-if (typeof loadGame !== "undefined") wcLvl = loadGame.wcLvl;
-if (typeof loadGame !== "undefined") selectedTree = loadGame.selectedTree;
+// if (typeof loadGame !== "undefined") totalXp = loadGame.totalXp;
+// if (typeof loadGame !== "undefined") skills = loadGame.skills;
+// if (typeof loadGame !== "undefined") wcXp = loadGame.wcXp;
+// if (typeof loadGame !== "undefined") wcLvl = loadGame.wcLvl;
+// if (typeof loadGame !== "undefined") selectedTree = loadGame.selectedTree;
 
 // if (saveGame !== null) {
 //     // gameData = saveGame //saves to local storage

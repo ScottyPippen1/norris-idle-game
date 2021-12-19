@@ -4,6 +4,7 @@
 	font-family: sans-serif;
 	background-color:beige;
 }
+
 body {
 	display: flex;
 	justify-content: center;
@@ -11,6 +12,25 @@ body {
 	height: 100vh;
 	flex-direction: column;
 }
+
+button {
+	background: #0088FF;
+	display: inline;
+	margin: 20px;
+	border: none;
+	outline: none;
+	padding: 10px;
+	border-radius: 10px;
+	color: #eee;
+}
+button:hover  {
+	opacity: .7;
+}
+
+.updateLoadedGameUIButton {
+	background: #00ff2a;
+}
+
 /*action interval bar animation*/
 .notransition {
 	-webkit-transition: none !important;
@@ -32,16 +52,3 @@ body {
 	transition: unset;
 }
 
-button {
-	background: #0088FF;
-	display: inline;
-	margin: 20px;
-	border: none;
-	outline: none;
-	padding: 10px;
-	border-radius: 10px;
-	color: #eee;
-}
-button:hover  {
-	opacity: .7;
-}

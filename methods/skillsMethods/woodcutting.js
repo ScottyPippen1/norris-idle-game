@@ -5,6 +5,12 @@
 //     selectedTree: []
 // }
 
+//calculate progress bar % to next level
+function wcPercentToNextLvl() {
+    nextWcLvl = skillLevelMilestones[gameData.wcLvl];
+    percentToNextWcLvl = (gameData.wcXp - skillLevelMilestones[gameData.wcLvl - 1]) / (nextWcLvl - skillLevelMilestones[gameData.wcLvl - 1]) * 100;
+}
+
 function level_up_woodcutting() {
     if (gameData.wcXp >= skillLevelMilestones[gameData.wcLvl]) {
         gameData.wcLvl += 1;
@@ -32,8 +38,6 @@ function execute_woodcutting(button_clicked) {
 
     level_up_woodcutting();
     update("wcLvl", `Woodcutting Level: ${gameData.wcLvl}`);
-
-
 
     // checks if a tree is selected to cut
     if (selectedTree == null) {

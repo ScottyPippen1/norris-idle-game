@@ -1,8 +1,28 @@
 $(document).ready(() => {
-    let interval;
-    let progressed = 0;
-    let nextWcLvl = 0;
-    let percentToNextLvl = 0;
+    //update loaded game jquery elements
+    $('.updateLoadedGameUIButton').click(() => {
+        if (gameData.wcLvl || gameData.wcXp !== 0) {
+            wcPercentToNextLvl();
+            $('#xp-progress-bar-woodcutting')
+                .css("width", Math.round(percentToNextWcLvl) + "%")
+                .attr("aria-valuenow", Math.round(percentToNextWcLvl))
+                .text(Math.round(percentToNextWcLvl) + "%");
+        }
+        if (gameData.miningLvl || gameData.miningXp !== 0) {
+            miningPercentToNextLvl();
+            $('#xp-progress-bar-mining')
+                .css("width", Math.round(percentToNextMiningLvl) + "%")
+                .attr("aria-valuenow", Math.round(percentToNextMiningLvl))
+                .text(Math.round(percentToNextMiningLvl) + "%");
+        }
+        if (gameData.fishLvl || gameData.fishXp !== 0) {
+            fishPercentToNextLvl();
+            $('#xp-progress-bar-fishing')
+                .css("width", Math.round(percentToNextFishLvl) + "%")
+                .attr("aria-valuenow", Math.round(percentToNextFishLvl))
+                .text(Math.round(percentToNextFishLvl) + "%");
+        }
+    });
 
     //cutwood button click function
     $('.cutWoodButton').click(() => {
@@ -10,23 +30,22 @@ $(document).ready(() => {
         if (!interval) {
             interval = setInterval(() => {
                 progressed += 1;
-                nextWcLvl = skillLevelMilestones[gameData.wcLvl];
-                percentToNextLvl = (gameData.wcXp - skillLevelMilestones[gameData.wcLvl - 1]) / (nextWcLvl - skillLevelMilestones[gameData.wcLvl - 1]) * 100;
+                wcPercentToNextLvl();
+                $('#xp-progress-bar-woodcutting')
+                    .css("width", Math.round(percentToNextWcLvl) + "%")
+                    .attr("aria-valuenow", Math.round(percentToNextWcLvl))
+                    .text(Math.round(percentToNextWcLvl) + "%");
+
                 $('#action-interval-bar-woodcutting')
                     .css("width", progressed + "%")
                     .attr("aria-valuenow", progressed)
                     .text(progressed + "%");
 
-                $('#xp-progress-bar-woodcutting')
-                    .css("width", Math.round(percentToNextLvl) + "%")
-                    .attr("aria-valuenow", Math.round(percentToNextLvl))
-                    .text(Math.round(percentToNextLvl) + "%");
-
                 if (progressed >= 100) {
                     progressed = 0;
                     $('#action-interval-bar-woodcutting').addClass("notransition");
                     $('#action-interval-bar-woodcutting').attr('style', "width: 0%");
-                    $('#xp-progress-bar-woodcutting').attr("aria-valuenow", Math.round(percentToNextLvl));
+                    $('#xp-progress-bar-woodcutting').attr("aria-valuenow", Math.round(percentToNextWcLvl));
                 }
             }, get_interval_speed(selectedTree) / 100);
         } else {
@@ -48,6 +67,12 @@ $(document).ready(() => {
         if (!interval) {
             interval = setInterval(() => {
                 progressed += 1;
+                miningPercentToNextLvl();
+                $('#xp-progress-bar-mining')
+                    .css("width", Math.round(percentToNextMiningLvl) + "%")
+                    .attr("aria-valuenow", Math.round(percentToNextMiningLvl))
+                    .text(Math.round(percentToNextMiningLvl) + "%");
+
                 $('#action-interval-bar-mining')
                     .css("width", progressed + "%")
                     .attr("aria-valuenow", progressed)
@@ -57,6 +82,7 @@ $(document).ready(() => {
                     progressed = 0;
                     $('#action-interval-bar-mining').addClass("notransition");
                     $('#action-interval-bar-mining').attr('style', "width: 0%");
+                    $('#xp-progress-bar-mining').attr("aria-valuenow", Math.round(percentToNextMiningLvl));
                 }
             }, get_interval_speed(selectedVein) / 100);
         } else {
@@ -78,6 +104,12 @@ $(document).ready(() => {
         if (!interval) {
             interval = setInterval(() => {
                 progressed += 1;
+                fishPercentToNextLvl();
+                $('#xp-progress-bar-fishing')
+                    .css("width", Math.round(percentToNextFishLvl) + "%")
+                    .attr("aria-valuenow", Math.round(percentToNextFishLvl))
+                    .text(Math.round(percentToNextFishLvl) + "%");
+
                 $('#action-interval-bar-fishing')
                     .css("width", progressed + "%")
                     .attr("aria-valuenow", progressed)
@@ -87,6 +119,7 @@ $(document).ready(() => {
                     progressed = 0;
                     $('#action-interval-bar-fishing').addClass("notransition");
                     $('#action-interval-bar-fishing').attr('style', "width: 0%");
+                    $('#xp-progress-bar-fishing').attr("aria-valuenow", Math.round(percentToNextFishLvl));
                 }
             }, get_interval_speed(selectedFishSpot) / 100);
         } else {
@@ -105,11 +138,11 @@ $(document).ready(() => {
     // //update skill progress bar
     // $('#xp-progress-bar-woodcutting').each(function () {
     //     let nextWcLvl = skillLevelMilestones[gameData.wcLvl + 1];
-    //     let percentToNextLvl = (nextWcLvl - gameData.wcXp) / 100;
+    //     let percentToNextWcLvl = (nextWcLvl - gameData.wcXp) / 100;
     //     $('#xp-progress-bar-woodcutting')
-    //         .css("width", percentToNextLvl + "%")
-    //         .attr("aria-valuenow", percentToNextLvl)
-    //         .text(percentToNextLvl + "%");
+    //         .css("width", percentToNextWcLvl + "%")
+    //         .attr("aria-valuenow", percentToNextWcLvl)
+    //         .text(percentToNextWcLvl + "%");
     // });
 
 });

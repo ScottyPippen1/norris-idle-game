@@ -1,14 +1,20 @@
 // mining data object
-var miningData = {
-    miningXp: 0,
-    miningLvl: 0,
-    selectedVein: []
+// var gameData = {
+//     miningXp: 0,
+//     miningLvl: 0,
+//     selectedVein: []
+// }
+
+//calculate progress bar % to next level
+function miningPercentToNextLvl() {
+    nextMiningLvl = skillLevelMilestones[gameData.miningLvl];
+    percentToNextMiningLvl = (gameData.miningXp - skillLevelMilestones[gameData.miningLvl - 1]) / (nextMiningLvl - skillLevelMilestones[gameData.miningLvl - 1]) * 100;
 }
 
 function level_up_mining() {
-    if (miningData.miningXp >= skillLevelMilestones[miningData.miningLvl]) {
-        miningData.miningLvl += 1;
-        console.log("New mining level: " + miningData.miningLvl);
+    if (gameData.miningXp >= skillLevelMilestones[gameData.miningLvl]) {
+        gameData.miningLvl += 1;
+        console.log("New mining level: " + gameData.miningLvl);
     }
 }
 
@@ -31,7 +37,7 @@ function execute_mining(button_clicked) {
     gameData.activeSkill = skillsData.skills[2].name;
 
     level_up_mining();
-    update("miningLvl", `Mining Level: ${miningData.miningLvl}`);
+    update("miningLvl", `Mining Level: ${gameData.miningLvl}`);
 
     // checks if a tree is selected to cut
     if (selectedVein == null) {
@@ -62,10 +68,10 @@ function mineVein() {
     // determines how much xp is incremented per action based on type of vein selected
     let xp_gained = miningVeinData.veins[selectedVein].xp;
 
-    miningData.miningXp = miningData.miningXp + xp_gained;
+    gameData.miningXp = gameData.miningXp + xp_gained;
     // visual updates
     update_total_xp(xp_gained);
-    update("miningXp", `Mining Experience: ${miningData.miningXp}`);
+    update("miningXp", `Mining Experience: ${gameData.miningXp}`);
     execute_mining(1);
 }
 

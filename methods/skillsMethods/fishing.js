@@ -1,14 +1,20 @@
 // fishing data object
-var fishData = {
-    fishXp: 0,
-    fishLvl: 0,
-    selectedFishSpot: []
+// var fishData = {
+//     fishXp: 0,
+//     fishLvl: 0,
+//     selectedFishSpot: []
+// }
+
+//calculate progress bar % to next level
+function fishPercentToNextLvl() {
+    nextFishLvl = skillLevelMilestones[gameData.fishLvl];
+    percentToNextFishLvl = (gameData.fishXp - skillLevelMilestones[gameData.fishLvl - 1]) / (nextFishLvl - skillLevelMilestones[gameData.fishLvl - 1]) * 100;
 }
 
 function level_up_fishing() {
-    if (fishData.fishXp >= skillLevelMilestones[fishData.fishLvl]) {
-        fishData.fishLvl += 1;
-        console.log("New fishing level: " + fishData.fishLvl);
+    if (gameData.fishXp >= skillLevelMilestones[gameData.fishLvl]) {
+        gameData.fishLvl += 1;
+        console.log("New fishing level: " + gameData.fishLvl);
     }
 }
 
@@ -31,7 +37,7 @@ function execute_fishing(button_clicked) {
     gameData.activeSkill = skillsData.skills[1].name;
 
     level_up_fishing();
-    update("fishingLvl", `Fishing Level: ${fishData.fishLvl}`);
+    update("fishLvl", `Fishing Level: ${gameData.fishLvl}`);
 
     // checks if a fish is selected to fish
     if (selectedFishSpot == null) {
@@ -62,10 +68,10 @@ function catchFish() {
     // determines how much xp is incremented per action based on type of fish selected
     let xp_gained = fishingSpotData.fish[selectedFishSpot].xp;
 
-    fishData.fishXp = fishData.fishXp + xp_gained;
+    gameData.fishXp = gameData.fishXp + xp_gained;
     // visual updates
     update_total_xp(xp_gained);
-    update("fishingXp", `Fishing Experience: ${fishData.fishXp}`);
+    update("fishXp", `Fishing Experience: ${gameData.fishXp}`);
     execute_fishing(1);
 
 }
