@@ -1,28 +1,26 @@
 $(document).ready(() => {
     //update loaded game jquery elements
-    $('.updateLoadedGameUIButton').click(() => {
-        if (gameData.wcLvl || gameData.wcXp !== 0) {
-            wcPercentToNextLvl();
-            $('#xp-progress-bar-woodcutting')
-                .css("width", Math.round(percentToNextWcLvl) + "%")
-                .attr("aria-valuenow", Math.round(percentToNextWcLvl))
-                .text(Math.round(percentToNextWcLvl) + "%");
-        }
-        if (gameData.miningLvl || gameData.miningXp !== 0) {
-            miningPercentToNextLvl();
-            $('#xp-progress-bar-mining')
-                .css("width", Math.round(percentToNextMiningLvl) + "%")
-                .attr("aria-valuenow", Math.round(percentToNextMiningLvl))
-                .text(Math.round(percentToNextMiningLvl) + "%");
-        }
-        if (gameData.fishLvl || gameData.fishXp !== 0) {
-            fishPercentToNextLvl();
-            $('#xp-progress-bar-fishing')
-                .css("width", Math.round(percentToNextFishLvl) + "%")
-                .attr("aria-valuenow", Math.round(percentToNextFishLvl))
-                .text(Math.round(percentToNextFishLvl) + "%");
-        }
-    });
+    if (wcXp !== 0) {
+        wcPercentToNextLvl();
+        $('#xp-progress-bar-woodcutting')
+            .css("width", Math.round(percentToNextWcLvl) + "%")
+            .attr("aria-valuenow", Math.round(percentToNextWcLvl))
+            .text(Math.round(percentToNextWcLvl) + "%");
+    }
+    if (miningXp !== 0) {
+        miningPercentToNextLvl();
+        $('#xp-progress-bar-mining')
+            .css("width", Math.round(percentToNextMiningLvl) + "%")
+            .attr("aria-valuenow", Math.round(percentToNextMiningLvl))
+            .text(Math.round(percentToNextMiningLvl) + "%");
+    }
+    if (fishXp !== 0) {
+        fishPercentToNextLvl();
+        $('#xp-progress-bar-fishing')
+            .css("width", Math.round(percentToNextFishLvl) + "%")
+            .attr("aria-valuenow", Math.round(percentToNextFishLvl))
+            .text(Math.round(percentToNextFishLvl) + "%");
+    }
 
     //cutwood button click function
     $('.cutWoodButton').click(() => {

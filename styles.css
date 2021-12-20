@@ -27,10 +27,6 @@ button:hover  {
 	opacity: .7;
 }
 
-.updateLoadedGameUIButton {
-	background: #00ff2a;
-}
-
 /*action interval bar animation*/
 .notransition {
 	-webkit-transition: none !important;

@@ -7,22 +7,22 @@
 
 //calculate progress bar % to next level
 function wcPercentToNextLvl() {
-    nextWcLvl = skillLevelMilestones[gameData.wcLvl];
-    percentToNextWcLvl = (gameData.wcXp - skillLevelMilestones[gameData.wcLvl - 1]) / (nextWcLvl - skillLevelMilestones[gameData.wcLvl - 1]) * 100;
+    nextWcLvl = skillLevelMilestones[wcLvl];
+    percentToNextWcLvl = (wcXp - skillLevelMilestones[wcLvl - 1]) / (nextWcLvl - skillLevelMilestones[wcLvl - 1]) * 100;
 }
 
 function level_up_woodcutting() {
-    if (gameData.wcXp >= skillLevelMilestones[gameData.wcLvl]) {
-        gameData.wcLvl += 1;
-        console.log("New woodcutting level: " + gameData.wcLvl);
+    if (wcXp >= skillLevelMilestones[wcLvl]) {
+        wcLvl += 1;
+        console.log("New woodcutting level: " + wcLvl);
     }
 }
 
 function get_interval_speed(tree_id) {
     // sets interval speed for based on type of tree
-    gameData.actionIntervalSpeed = woodcuttingTreeData.trees[tree_id].intervalSpeed;
-    console.log("interval speed: " + gameData.actionIntervalSpeed);
-    return gameData.actionIntervalSpeed;
+    actionIntervalSpeed = woodcuttingTreeData.trees[tree_id].intervalSpeed;
+    console.log("interval speed: " + actionIntervalSpeed);
+    return actionIntervalSpeed;
 }
 
 function get_selected_tree(tree_id) {
@@ -34,10 +34,10 @@ function get_selected_tree(tree_id) {
 
 function execute_woodcutting(button_clicked) {
     // sets active skill
-    gameData.activeSkill = skillsData.skills[0].name;
+    activeSkill = skillsData.skills[0].name;
 
     level_up_woodcutting();
-    update("wcLvl", `Woodcutting Level: ${gameData.wcLvl}`);
+    update("wcLvl", `Woodcutting Level: ${wcLvl}`);
 
     // checks if a tree is selected to cut
     if (selectedTree == null) {
@@ -52,7 +52,7 @@ function execute_woodcutting(button_clicked) {
         clearTimeout(task);
 
         // clears active skill
-        gameData.activeSkill = "";
+        activeSkill = "";
 
         active_skill();
         task = null;
@@ -68,10 +68,10 @@ function cutWood() {
     // determines how much xp is incremented per action based on type of tree selected
     let xp_gained = woodcuttingTreeData.trees[selectedTree].xp;
 
-    gameData.wcXp = gameData.wcXp + xp_gained;
+    wcXp = wcXp + xp_gained;
     // visual updates
     update_total_xp(xp_gained);
-    update("wcXp", `Woodcutting Experience: ${gameData.wcXp}`);
+    update("wcXp", `Woodcutting Experience: <br>${wcXp}`);
     execute_woodcutting(1);
 }
 
