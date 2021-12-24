@@ -13,13 +13,13 @@ function loadGame() {
     if (typeof savedGame.actionIntervalSpeed !== "undefined") actionIntervalSpeed = savedGame.actionIntervalSpeed;
     if (typeof savedGame.wcXp !== "undefined") wcXp = savedGame.wcXp;
     if (typeof savedGame.wcLvl !== "undefined") wcLvl = savedGame.wcLvl;
-    // if (typeof savedGame.selectedTree !== "undefined") selectedTree = savedGame.selectedTree;
+    if (typeof savedGame.selectedTree !== "undefined") selectedTree = savedGame.selectedTree;
     if (typeof savedGame.miningXp !== "undefined") miningXp = savedGame.miningXp;
     if (typeof savedGame.miningLvl !== "undefined") miningLvl = savedGame.miningLvl;
-    // if (typeof savedGame.selectedVein !== "undefined") selectedVein = savedGame.selectedVein;
+    if (typeof savedGame.selectedVein !== "undefined") selectedVein = savedGame.selectedVein;
     if (typeof savedGame.fishXp !== "undefined") fishXp = savedGame.fishXp;
     if (typeof savedGame.fishLvl !== "undefined") fishLvl = savedGame.fishLvl;
-    // if (typeof savedGame.selectedFishSpot !== "undefined") selectedFishSpot = savedGame.selectedFishSpot;
+    if (typeof savedGame.selectedFishSpot !== "undefined") selectedFishSpot = savedGame.selectedFishSpot;
     if (typeof savedGame.test !== "undefined") test = savedGame.test;
     if (typeof savedGame.test2 !== "undefined") test2 = savedGame.test2;
 
@@ -35,13 +35,13 @@ function saveGame() {
         actionIntervalSpeed: actionIntervalSpeed,
         wcXp: wcXp,
         wcLvl: wcLvl,
-        // selectedTree: selectedTree,
+        selectedTree: selectedTree,
         miningXp: miningXp,
         miningLvl: miningLvl,
-        // selectedVein: selectedVein,
+        selectedVein: selectedVein,
         fishXp: fishXp,
         fishLvl: fishLvl,
-        // selectedFishSpot: selectedFishSpot,
+        selectedFishSpot: selectedFishSpot,
         test: test,
         test2: test2
     };
@@ -60,7 +60,7 @@ function active_skill() {
 
 //update loaded game html elements
 function updateLoadedGameUI() {
-    update("totalXp", `Total Experience: ${totalXp} `);
+    update("totalXp", `Total Experience: ${totalXp}`);
     update("wcLvl", `Woodcutting Level: ${wcLvl}`);
     update("wcXp", `Woodcutting Experience: <br>${wcXp}`);
     update("miningLvl", `Mining Level: ${miningLvl}`);
@@ -77,7 +77,7 @@ function update(id, content) {
 // updates total xp
 function update_total_xp(xp_gained) {
     totalXp = totalXp + xp_gained;
-    update("totalXp", `Total Experience: ${totalXp} `);
+    update("totalXp", `Total Experience: ${totalXp}`);
 }
 
 function woodcuttingHandler() {
