@@ -27,9 +27,12 @@ function get_interval_speed(tree_id) {
 
 function get_selected_tree(tree_id) {
     // sets selected tree to cut
-    selectedTree = tree_id;
+    selectedTree = woodcuttingTreeData.trees[tree_id].type;
+    selectedTreeId = tree_id;
+    // let treeDropdownValue = document.getElementById("treeDropdown").value;
+    update("dropdownMenu2", selectedTree);
     console.log(selectedTree);
-    return selectedTree;
+    // return selectedTree;
 }
 
 function execute_woodcutting(button_clicked) {
@@ -40,7 +43,7 @@ function execute_woodcutting(button_clicked) {
     update("wcLvl", `Woodcutting Level: ${wcLvl}`);
 
     // checks if a tree is selected to cut
-    if (selectedTree == null) {
+    if (selectedTreeId == null) {
         alert("Select a tree to cut");
         return;
     }
@@ -61,12 +64,12 @@ function execute_woodcutting(button_clicked) {
     }
     active_skill();
     // task to cut wood if no task is running
-    task = setTimeout(woodcuttingHandler, get_interval_speed(selectedTree));
+    task = setTimeout(woodcuttingHandler, get_interval_speed(selectedTreeId));
 }
 
 function cutWood() {
     // determines how much xp is incremented per action based on type of tree selected
-    let xp_gained = woodcuttingTreeData.trees[selectedTree].xp;
+    let xp_gained = woodcuttingTreeData.trees[selectedTreeId].xp;
 
     wcXp = wcXp + xp_gained;
     // visual updates

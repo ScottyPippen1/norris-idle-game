@@ -30,7 +30,7 @@ const skillsData = {
 const woodcuttingTreeData = {
     trees: [
         {
-            type: "tree",
+            type: "normal",
             xp: 25,
             intervalSpeed: 3000
         },

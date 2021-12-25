@@ -14,6 +14,7 @@ function loadGame() {
     if (typeof savedGame.wcXp !== "undefined") wcXp = savedGame.wcXp;
     if (typeof savedGame.wcLvl !== "undefined") wcLvl = savedGame.wcLvl;
     if (typeof savedGame.selectedTree !== "undefined") selectedTree = savedGame.selectedTree;
+    if (typeof savedGame.selectedTreeId !== "undefined") selectedTreeId = savedGame.selectedTreeId;
     if (typeof savedGame.miningXp !== "undefined") miningXp = savedGame.miningXp;
     if (typeof savedGame.miningLvl !== "undefined") miningLvl = savedGame.miningLvl;
     if (typeof savedGame.selectedVein !== "undefined") selectedVein = savedGame.selectedVein;
@@ -36,6 +37,7 @@ function saveGame() {
         wcXp: wcXp,
         wcLvl: wcLvl,
         selectedTree: selectedTree,
+        selectedTreeId: selectedTreeId,
         miningXp: miningXp,
         miningLvl: miningLvl,
         selectedVein: selectedVein,
@@ -63,6 +65,7 @@ function updateLoadedGameUI() {
     update("totalXp", `Total Experience: ${totalXp}`);
     update("wcLvl", `Woodcutting Level: ${wcLvl}`);
     update("wcXp", `Woodcutting Experience: <br>${wcXp}`);
+    update("dropdownMenu2", selectedTree);
     update("miningLvl", `Mining Level: ${miningLvl}`);
     update("miningXp", `Mining Experience: <br>${miningXp}`);
     update("fishLvl", `Fishing Level: ${fishLvl}`);

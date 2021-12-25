@@ -45,7 +45,7 @@ $(document).ready(() => {
                     $('#action-interval-bar-woodcutting').attr('style', "width: 0%");
                     $('#xp-progress-bar-woodcutting').attr("aria-valuenow", Math.round(percentToNextWcLvl));
                 }
-            }, get_interval_speed(selectedTree) / 100);
+            }, get_interval_speed(selectedTreeId) / 100);
         } else {
             clearInterval(interval);
             interval = null;

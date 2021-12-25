@@ -32,18 +32,24 @@
                         role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <button class="cutWoodButton" onclick="execute_woodcutting(0)">Cut Wood</button>
-                <div class="dropdown">
+                <div class="btn-group">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select Tree Type
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" onclick="get_selected_tree(0)" type="button">Normal Tree</button>
-                        <button class="dropdown-item" onclick="get_selected_tree(1)" type="button">Oak Tree</button>
-                        <button class="dropdown-item" onclick="get_selected_tree(2)" type="button">Willow Tree</button>
-                        <button class="dropdown-item" onclick="get_selected_tree(3)" type="button">Maple Tree</button>
-                        <button class="dropdown-item" onclick="get_selected_tree(4)" type="button">Yew Tree</button>
-                        <button class="dropdown-item" onclick="get_selected_tree(5)" type="button">Magic Tree</button>
+                        <a class="dropdown-item" href="#" onclick="get_selected_tree(0)" value="normal tree">Normal
+                            Tree</a>
+                        <a class="dropdown-item" href="#" onclick="get_selected_tree(1)" value="oak tree">Oak
+                            Tree</a>
+                        <a class="dropdown-item" href="#" onclick="get_selected_tree(2)" value="willow tree">Willow
+                            Tree</a>
+                        <a class="dropdown-item" href="#" onclick="get_selected_tree(3)" value="maple tree">Maple
+                            Tree</a>
+                        <a class="dropdown-item" href="#" onclick="get_selected_tree(4)" value="yew tree">Yew
+                            Tree</a>
+                        <a class="dropdown-item" href="#" onclick="get_selected_tree(5)" value="magic tree">Magic
+                            Tree</a>
                     </div>
                 </div>
             </div>

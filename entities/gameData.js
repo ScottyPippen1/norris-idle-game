@@ -7,6 +7,7 @@ let actionIntervalSpeed = 0;
 let wcXp = 0;
 let wcLvl = 0;
 let selectedTree;
+let selectedTreeId;
 // let selectedTree = [];
 let miningXp = 0;
 let miningLvl = 0;
