@@ -16,15 +16,20 @@ body {
 button {
 	background: #0088FF;
 	display: inline;
-	margin: 20px;
+	margin: 10px;
 	border: none;
 	outline: none;
 	padding: 10px;
 	border-radius: 10px;
 	color: #eee;
 }
+
 button:hover  {
 	opacity: .7;
+}
+
+.progress {
+	margin: 10px;
 }
 
 /*action interval bar animation*/
@@ -34,7 +39,7 @@ button:hover  {
 	-o-transition: none !important;
 	-ms-transition: none !important;
 	transition: none !important;
-  }
+}
 
 #action-interval-bar-woodcutting {
 	transition: unset;

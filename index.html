@@ -26,32 +26,31 @@
                     <div id="xp-progress-bar-woodcutting" class="progress-bar bg-success" role="progressbar"
                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <br>
-                <div class="progress" style="height: 30px;">
-                    <div id="action-interval-bar-woodcutting" class="progress-bar bg-info progress-bar"
-                        role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <button class="cutWoodButton" onclick="execute_woodcutting(0)">Cut Wood</button>
-                <div class="btn-group">
+                <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select Tree Type
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <a class="dropdown-item" href="#" onclick="get_selected_tree(0)" value="normal tree">Normal
+                        <a class="dropdown-item" href="#" onclick="get_selected_tree(0)">Normal
                             Tree</a>
-                        <a class="dropdown-item" href="#" onclick="get_selected_tree(1)" value="oak tree">Oak
+                        <a class="dropdown-item" href="#" onclick="get_selected_tree(1)">Oak
                             Tree</a>
-                        <a class="dropdown-item" href="#" onclick="get_selected_tree(2)" value="willow tree">Willow
+                        <a class="dropdown-item" href="#" onclick="get_selected_tree(2)">Willow
                             Tree</a>
-                        <a class="dropdown-item" href="#" onclick="get_selected_tree(3)" value="maple tree">Maple
+                        <a class="dropdown-item" href="#" onclick="get_selected_tree(3)">Maple
                             Tree</a>
-                        <a class="dropdown-item" href="#" onclick="get_selected_tree(4)" value="yew tree">Yew
+                        <a class="dropdown-item" href="#" onclick="get_selected_tree(4)">Yew
                             Tree</a>
-                        <a class="dropdown-item" href="#" onclick="get_selected_tree(5)" value="magic tree">Magic
+                        <a class="dropdown-item" href="#" onclick="get_selected_tree(5)">Magic
                             Tree</a>
                     </div>
                 </div>
+                <button class="cutWoodButton" onclick="execute_woodcutting(0)">Cut Wood</button>
+                <div class="progress" style="height: 30px;">
+                    <div id="action-interval-bar-woodcutting" class="progress-bar bg-info progress-bar"
+                        role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div><br>
             </div>
             <div class="col">
                 <p id="miningLvl">Mining Level: 0</p>
@@ -72,6 +71,13 @@
                         Select Vein Type
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <!-- <a class="dropdown-item" href="#" onclick="get_selected_vein(0)">Copper Vein</a>
+                        <a class="dropdown-item" href="#" onclick="get_selected_vein(1)">Tin Vein</a>
+                        <a class="dropdown-item" href="#" onclick="get_selected_vein(2)">Iron Vein</a>
+                        <a class="dropdown-item" href="#" onclick="get_selected_vein(3)">Coal Vein</a>
+                        <a class="dropdown-item" href="#" onclick="get_selected_vein(4)">Mithril Vein</a>
+                        <a class="dropdown-item" href="#" onclick="get_selected_vein(5)">Adamant Vein</a>
+                        <a class="dropdown-item" href="#" onclick="get_selected_vein(6)">Runite Vein</a> -->
                         <button class="dropdown-item" onclick="get_selected_vein(0)" type="button">Copper Vein</button>
                         <button class="dropdown-item" onclick="get_selected_vein(1)" type="button">Tin Vein</button>
                         <button class="dropdown-item" onclick="get_selected_vein(2)" type="button">Iron Vein</button>
