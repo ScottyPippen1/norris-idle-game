@@ -9,14 +9,6 @@ let wcLvl = 0;
 let selectedTree;
 let selectedTreeId;
 // let selectedTree = [];
-let miningXp = 0;
-let miningLvl = 0;
-let selectedVein;
-// let selectedVein = [];
-let fishXp = 0;
-let fishLvl = 0;
-let selectedFishSpot;
-// let selectedFishSpot = [];
 let test = 0;
 let test2 = 0;
 
@@ -26,8 +18,3 @@ let interval;
 let progressed = 0;
 let nextWcLvl;
 let percentToNextWcLvl;
-let nextMiningLvl;
-let percentToNextMiningLvl;
-let nextFishLvl;
-let percentToNextFishLvl;
-

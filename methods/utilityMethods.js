@@ -15,12 +15,6 @@ function loadGame() {
     if (typeof savedGame.wcLvl !== "undefined") wcLvl = savedGame.wcLvl;
     if (typeof savedGame.selectedTree !== "undefined") selectedTree = savedGame.selectedTree;
     if (typeof savedGame.selectedTreeId !== "undefined") selectedTreeId = savedGame.selectedTreeId;
-    if (typeof savedGame.miningXp !== "undefined") miningXp = savedGame.miningXp;
-    if (typeof savedGame.miningLvl !== "undefined") miningLvl = savedGame.miningLvl;
-    if (typeof savedGame.selectedVein !== "undefined") selectedVein = savedGame.selectedVein;
-    if (typeof savedGame.fishXp !== "undefined") fishXp = savedGame.fishXp;
-    if (typeof savedGame.fishLvl !== "undefined") fishLvl = savedGame.fishLvl;
-    if (typeof savedGame.selectedFishSpot !== "undefined") selectedFishSpot = savedGame.selectedFishSpot;
     if (typeof savedGame.test !== "undefined") test = savedGame.test;
     if (typeof savedGame.test2 !== "undefined") test2 = savedGame.test2;
 
@@ -38,12 +32,6 @@ function saveGame() {
         wcLvl: wcLvl,
         selectedTree: selectedTree,
         selectedTreeId: selectedTreeId,
-        miningXp: miningXp,
-        miningLvl: miningLvl,
-        selectedVein: selectedVein,
-        fishXp: fishXp,
-        fishLvl: fishLvl,
-        selectedFishSpot: selectedFishSpot,
         test: test,
         test2: test2
     };
@@ -66,10 +54,6 @@ function updateLoadedGameUI() {
     update("wcLvl", `Woodcutting Level: ${wcLvl}`);
     update("wcXp", `Woodcutting Experience: <br>${wcXp}`);
     update("dropdownMenu2", selectedTree);
-    update("miningLvl", `Mining Level: ${miningLvl}`);
-    update("miningXp", `Mining Experience: <br>${miningXp}`);
-    update("fishLvl", `Fishing Level: ${fishLvl}`);
-    update("fishXp", `Fishing Experience: <br>${fishXp}`);
 }
 
 //updates html elements
@@ -87,22 +71,10 @@ function woodcuttingHandler() {
     cutWood();
 }
 
-// function firemakingHandler() {
-//     lightLog();
+// function fishingHandler() {
+//     catchFish();
 // }
 
-function fishingHandler() {
-    catchFish();
-}
-
-// function cookingHandler() {
-//     cookFish();
-// }
-
-function miningHandler() {
-    mineVein();
-}
-
-// function smithingHandler() {
-//     smeltBar();
+// function miningHandler() {
+//     mineVein();
 // }
