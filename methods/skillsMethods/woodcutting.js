@@ -36,9 +36,6 @@ function get_selected_tree(tree_id) {
 }
 
 function execute_woodcutting(button_clicked) {
-    // sets active skill
-    activeSkill = skillsData.skills[0].name;
-
     level_up_woodcutting();
     update("wcLvl", `Woodcutting Level: ${wcLvl}`);
 
@@ -46,6 +43,9 @@ function execute_woodcutting(button_clicked) {
     if (selectedTreeId == null) {
         alert("Select a tree to cut");
         return;
+    } else {
+        // sets active skill
+        activeSkill = skillsData.skills[0].name;
     }
 
     // stops task if button clicked while task is active
@@ -68,14 +68,21 @@ function execute_woodcutting(button_clicked) {
 }
 
 function cutWood() {
+    let coinFlip = Math.floor(Math.random() * 2);
     // determines how much xp is incremented per action based on type of tree selected
     let xp_gained = woodcuttingTreeData.trees[selectedTreeId].xp;
+    console.log(coinFlip);
+    if (coinFlip == 1) {
+        wcXp = wcXp + xp_gained;
+        // visual updates
+        update_total_xp(xp_gained);
+        update("wcXp", `Woodcutting Experience: <br>${wcXp}`);
+        execute_woodcutting(1);
 
-    wcXp = wcXp + xp_gained;
-    // visual updates
-    update_total_xp(xp_gained);
-    update("wcXp", `Woodcutting Experience: <br>${wcXp}`);
-    execute_woodcutting(1);
+    } else {
+        execute_woodcutting(1);
+    }
+
 }
 
 

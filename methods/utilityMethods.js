@@ -1,6 +1,7 @@
 window.onload = function () {
     loadGame();
     updateLoadedGameUI();
+    // localStorage.clear();
 }
 
 function loadGame() {
@@ -8,15 +9,10 @@ function loadGame() {
     let savedGame = JSON.parse(localStorage.getItem('gameSave'));
     if (typeof savedGame.lastTick !== "undefined") lastTick = savedGame.lastTick;
     if (typeof savedGame.totalXp !== "undefined") totalXp = savedGame.totalXp;
-    // if (typeof savedGame.skills !== "undefined") skills = savedGame.skills;
-    if (typeof savedGame.activeSkill !== "undefined") activeSkill = savedGame.activeSkill;
-    if (typeof savedGame.actionIntervalSpeed !== "undefined") actionIntervalSpeed = savedGame.actionIntervalSpeed;
     if (typeof savedGame.wcXp !== "undefined") wcXp = savedGame.wcXp;
     if (typeof savedGame.wcLvl !== "undefined") wcLvl = savedGame.wcLvl;
     if (typeof savedGame.selectedTree !== "undefined") selectedTree = savedGame.selectedTree;
     if (typeof savedGame.selectedTreeId !== "undefined") selectedTreeId = savedGame.selectedTreeId;
-    if (typeof savedGame.test !== "undefined") test = savedGame.test;
-    if (typeof savedGame.test2 !== "undefined") test2 = savedGame.test2;
 
     console.log(savedGame);
 }
@@ -25,17 +21,26 @@ function saveGame() {
     let gameSave = {
         lastTick: lastTick,
         totalXp: totalXp,
-        // skills: skills,
-        activeSkill: activeSkill,
-        actionIntervalSpeed: actionIntervalSpeed,
         wcXp: wcXp,
         wcLvl: wcLvl,
         selectedTree: selectedTree,
-        selectedTreeId: selectedTreeId,
-        test: test,
-        test2: test2
+        selectedTreeId: selectedTreeId
     };
     localStorage.setItem('gameSave', JSON.stringify(gameSave));
+}
+
+function resetGame() {
+    localStorage.clear();
+    let newGame = {
+        totalXp: 0,
+        wcXp: 0,
+        wcLvl: 1,
+        selectedTree: 'Normal Tree',
+        selectedTreeId: 0,
+    };
+    localStorage.setItem('gameSave', JSON.stringify(newGame));
+    updateLoadedGameUI();
+    location.reload();
 }
 
 function active_skill() {
