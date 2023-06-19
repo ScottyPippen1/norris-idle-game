@@ -60,7 +60,7 @@ function execute_woodcutting(button_clicked) {
   }
   active_skill();
   // task to cut wood if no task is running
-  task = setTimeout(woodcuttingHandler, get_interval_speed(selectedTreeId));
+  task = setTimeout(cutWood, get_interval_speed(selectedTreeId));
 }
 
 function cutWood() {
