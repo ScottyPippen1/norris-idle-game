@@ -5,7 +5,6 @@ function update(id, content) {
 
 //update loaded game html elements
 function updateLoadedGameUI() {
-  update("totalXp", `Total Experience: ${totalXp}`);
   update("wcLvl", `Woodcutting Level: ${wcLvl}`);
   update("wcXp", `Woodcutting Experience: ${wcXp}`);
   update("dropdownMenu2", selectedTree);

@@ -29,21 +29,25 @@ const woodcuttingTreeData = {
       type: "Willow Tree",
       xp: 67.5,
       intervalSpeed: 4000,
+      reward: "Willow log",
     },
     {
       type: "Maple Tree",
       xp: 100,
       intervalSpeed: 4500,
+      reward: "Maple log",
     },
     {
       type: "Yew Tree",
       xp: 175,
       intervalSpeed: 5500,
+      reward: "Yew log",
     },
     {
       type: "Magic Tree",
       xp: 250,
       intervalSpeed: 7500,
+      reward: "Magic log",
     },
   ],
 };
