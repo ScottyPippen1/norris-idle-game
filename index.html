@@ -29,7 +29,7 @@
         <div class="col">
           <p id="wcLvl">Woodcutting Level: 0</p>
           <p id="wcXp">Woodcutting Experience: 0</p>
-          <p id="regularLogCount">Regular Logs: 0</p>
+          <p id="inv"></p>
           <div class="progress m-auto w-50" style="height: 30px">
             <div
               id="xp-progress-bar-woodcutting"
@@ -53,7 +53,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
               <a class="dropdown-item" href="#" onclick="get_selected_tree(0)"
-                >Normal Tree</a
+                >Regular Tree</a
               >
               <a class="dropdown-item" href="#" onclick="get_selected_tree(1)"
                 >Oak Tree</a
@@ -112,6 +112,11 @@
     ></script>
     <script
       src="methods/gameStateUIMethods.js"
+      charset="utf-8"
+      type="text/javascript"
+    ></script>
+    <script
+      src="methods/inventoryMethods.js"
       charset="utf-8"
       type="text/javascript"
     ></script>

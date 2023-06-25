@@ -7,9 +7,6 @@ let wcXp = 0;
 let wcLvl = 0;
 let selectedTree;
 let selectedTreeId;
-let test = 0;
-let test2 = 0;
-let regularLogCount = 0;
 
 //global declared variables
 let task;

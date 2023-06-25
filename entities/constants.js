@@ -17,11 +17,13 @@ const woodcuttingTreeData = {
       type: "Regular Tree",
       xp: 25,
       intervalSpeed: 3000,
+      reward: "Regular log",
     },
     {
       type: "Oak Tree",
       xp: 37.5,
       intervalSpeed: 3500,
+      reward: "Oak log",
     },
     {
       type: "Willow Tree",

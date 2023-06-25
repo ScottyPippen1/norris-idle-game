@@ -1,5 +1,6 @@
 window.onload = function () {
   loadGame();
+  inv.loadFromLocalStorage();
   updateLoadedGameUI();
   // localStorage.clear();
 };
@@ -15,8 +16,6 @@ function loadGame() {
     selectedTree = savedGame.selectedTree;
   if (typeof savedGame.selectedTreeId !== "undefined")
     selectedTreeId = savedGame.selectedTreeId;
-  if (typeof savedGame.regularLogCount !== "undefined")
-    regularLogCount = savedGame.regularLogCount;
 
   console.log(savedGame);
 }
@@ -29,7 +28,6 @@ function saveGame() {
     wcLvl: wcLvl,
     selectedTree: selectedTree,
     selectedTreeId: selectedTreeId,
-    regularLogCount: regularLogCount,
   };
   localStorage.setItem("gameSave", JSON.stringify(gameSave));
 }
@@ -42,7 +40,6 @@ function resetGame() {
     wcLvl: 1,
     selectedTree: "Regular Tree",
     selectedTreeId: 0,
-    regularLogCount: 0,
   };
   localStorage.setItem("gameSave", JSON.stringify(newGame));
   updateLoadedGameUI();

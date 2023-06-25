@@ -31,6 +31,28 @@ function get_selected_tree(tree_id) {
   // return selectedTree;
 }
 
+function cutWood() {
+  let coinFlip = Math.floor(Math.random() * 2);
+  // determines how much xp is incremented per action based on type of tree selected
+  let xp_gained = woodcuttingTreeData.trees[selectedTreeId].xp;
+  let logProduced = woodcuttingTreeData.trees[selectedTreeId].reward;
+
+  console.log(coinFlip);
+  if (coinFlip == 1) {
+    wcXp = wcXp + xp_gained;
+
+    inv.addItem(logProduced);
+    inv.countOccurrences();
+    inv.saveToLocalStorage();
+    // visual updates
+    update_total_xp(xp_gained);
+    update("wcXp", `Woodcutting Experience: ${wcXp}`);
+    execute_woodcutting(1);
+  } else {
+    execute_woodcutting(1);
+  }
+}
+
 function execute_woodcutting(button_clicked) {
   level_up_woodcutting();
   update("wcLvl", `Woodcutting Level: ${wcLvl}`);
@@ -61,23 +83,4 @@ function execute_woodcutting(button_clicked) {
   active_skill();
   // task to cut wood if no task is running
   task = setTimeout(cutWood, get_interval_speed(selectedTreeId));
-}
-
-function cutWood() {
-  let coinFlip = Math.floor(Math.random() * 2);
-  // determines how much xp is incremented per action based on type of tree selected
-  let xp_gained = woodcuttingTreeData.trees[selectedTreeId].xp;
-
-  console.log(coinFlip);
-  if (coinFlip == 1) {
-    wcXp = wcXp + xp_gained;
-    regularLogCount++;
-    // visual updates
-    update_total_xp(xp_gained);
-    update("wcXp", `Woodcutting Experience: ${wcXp}`);
-    update("regularLogCount", `Logs: ${regularLogCount}`);
-    execute_woodcutting(1);
-  } else {
-    execute_woodcutting(1);
-  }
 }

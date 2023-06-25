@@ -8,7 +8,6 @@ function updateLoadedGameUI() {
   update("totalXp", `Total Experience: ${totalXp}`);
   update("wcLvl", `Woodcutting Level: ${wcLvl}`);
   update("wcXp", `Woodcutting Experience: ${wcXp}`);
-  update("regularLogCount", `Regular Logs: ${regularLogCount}`);
   update("dropdownMenu2", selectedTree);
 }
 
