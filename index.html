@@ -22,7 +22,9 @@
 
   <body class="text-center">
     <div class="container">
-      <button class="resetGameButton" onclick="resetGame()">Reset Game</button>
+      <button class="resetGameButton" onclick="clearGameData()">
+        Reset Game
+      </button>
       <h1 id="activeSkill"></h1>
       <h1 id="wcLvl">Woodcutting Level: 0</h1>
       <h3 id="wcXp">Woodcutting Experience: 0</h3>
@@ -39,16 +41,14 @@
               aria-valuemax="100"
             ></div>
           </div>
-          <div>
-            <h1>Inventory</h1>
-            <p id="inv" class="m-auto border border-3 border-dark rounded"></p>
-          </div>
+          <h1>Inventory</h1>
+          <div id="inventory"></div>
           <div class="dropdown">
             <button
               class="btn btn-secondary dropdown-toggle"
               type="button"
               id="dropdownMenu2"
-              data-toggle="dropdown"
+              data-bs-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
@@ -135,8 +135,8 @@
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
       crossorigin="anonymous"
     ></script>
     <script

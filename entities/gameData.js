@@ -4,7 +4,7 @@ let totalXp = 0;
 let activeSkill = [];
 let actionIntervalSpeed = 0;
 let wcXp = 0;
-let wcLvl = 0;
+let wcLvl = 1;
 let selectedTree;
 let selectedTreeId;
 

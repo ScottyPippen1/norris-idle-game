@@ -1,85 +1,39 @@
-class ItemNode {
-  constructor(name) {
-    this.name = name;
-    this.next = null;
+// Add an item to the player's inventory
+function addItemToInventory(itemName, quantity) {
+  if (gameData.player.inventory[itemName]) {
+    gameData.player.inventory[itemName] += quantity;
+  } else {
+    gameData.player.inventory[itemName] = quantity;
+  }
+  saveGameData();
+  displayInventory();
+}
+
+// Remove an item from the player's inventory
+function removeItemFromInventory(itemName, quantity) {
+  if (gameData.player.inventory[itemName]) {
+    gameData.player.inventory[itemName] -= quantity;
+    if (gameData.player.inventory[itemName] <= 0) {
+      delete gameData.player.inventory[itemName];
+    }
+    saveGameData();
+    displayInventory();
   }
 }
 
-class InventoryList {
-  constructor(inv) {
-    this.head = null;
-    this.targetElement = document.getElementById(inv);
-  }
-
-  addItem(itemName) {
-    const item = new ItemNode(itemName);
-    let current;
-    if (!this.head) {
-      this.head = item;
-    } else {
-      let current = this.head;
-      while (current.next) {
-        current = current.next;
-      }
-      current.next = item;
-    }
-    this.updateElement();
-  }
-
-  updateElement() {
-    let current = this.head;
-    let content = "";
-    while (current !== null) {
-      content += `${current.name}<br>`;
-      current = current.next;
-    }
-    this.targetElement.innerHTML = content;
-  }
-
-  countOccurrences() {
-    const countMap = new Map();
-    let current = this.head;
-    while (current !== null) {
-      const invItem = current.name;
-      if (countMap.has(invItem)) {
-        countMap.set(invItem, countMap.get(invItem) + 1);
-      } else {
-        countMap.set(invItem, 1);
-      }
-      current = current.next;
-    }
-
-    this.targetElement.innerHTML = "";
-
-    countMap.forEach((count, invItem) => {
-      console.log(`Item: ${invItem}, Amount: ${count}`);
-      const itemInfo = document.createElement("div");
-      itemInfo.innerHTML = `${invItem}: ${count}`;
-      this.targetElement.appendChild(itemInfo);
-    });
-  }
-
-  saveToLocalStorage() {
-    const invArray = [];
-    let current = this.head;
-    while (current !== null) {
-      invArray.push(current.name);
-      current = current.next;
-    }
-    localStorage.setItem("inventoryList", JSON.stringify(invArray));
-  }
-
-  loadFromLocalStorage() {
-    const savedInvArray = localStorage.getItem("inventoryList");
-    if (savedInvArray) {
-      const invArray = JSON.parse(savedInvArray);
-      this.head = null;
-      invArray.forEach((invItem) => {
-        this.addItem(invItem);
-      });
-    }
-    this.countOccurrences();
-  }
+// Get the quantity of a specific item in the player's inventory
+function getItemQuantity(itemName) {
+  return gameData.player.inventory[itemName] || 0;
 }
 
-const inv = new InventoryList("inv");
+// Display the inventory in an HTML element
+function displayInventory() {
+  const inventoryElement = document.getElementById("inventory");
+  let inventoryHTML = "<div>";
+  for (const item in gameData.player.inventory) {
+    const quantity = gameData.player.inventory[item];
+    inventoryHTML += `<p>${item}: ${quantity}</p>`;
+  }
+  inventoryHTML += "</div>";
+  inventoryElement.innerHTML = inventoryHTML;
+}

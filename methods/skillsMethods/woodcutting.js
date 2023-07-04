@@ -40,12 +40,9 @@ function cutWood() {
   console.log(coinFlip);
   if (coinFlip == 1) {
     wcXp = wcXp + xp_gained;
-
-    inv.addItem(logProduced);
-    inv.countOccurrences();
-    inv.saveToLocalStorage();
+    addItemToInventory(logProduced, 1);
+    console.log(getItemQuantity("Regular log"));
     // visual updates
-    update_total_xp(xp_gained);
     update("wcXp", `Woodcutting Experience: ${wcXp}`);
     execute_woodcutting(1);
   } else {

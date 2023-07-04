@@ -1,8 +1,8 @@
 //save game (game data needs to be stringified)
 let saveGameLoop = window.setInterval(() => {
-    saveGame();
-    //save game
-    // localStorage.setItem('savedGameData', JSON.stringify(gameData));
+  saveGameData();
+  //save game
+  // localStorage.setItem('savedGameData', JSON.stringify(gameData));
 }, 1000);
 
 // if (saveGame !== null) {
