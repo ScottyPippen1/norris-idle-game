@@ -37,17 +37,19 @@ function cutWood() {
   let xp_gained = woodcuttingTreeData.trees[selectedTreeId].xp;
   let logProduced = woodcuttingTreeData.trees[selectedTreeId].reward;
 
-  console.log(coinFlip);
+  console.log("Coinflip: " + coinFlip);
   if (coinFlip == 1) {
     wcXp = wcXp + xp_gained;
     addItemToInventory(logProduced, 1);
-    console.log(getItemQuantity("Regular log"));
+    saveGameData();
+
     // visual updates
     update("wcXp", `Woodcutting Experience: ${wcXp}`);
     execute_woodcutting(1);
   } else {
     execute_woodcutting(1);
   }
+  getInventoryItems();
 }
 
 function execute_woodcutting(button_clicked) {

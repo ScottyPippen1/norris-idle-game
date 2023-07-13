@@ -22,6 +22,9 @@ function saveGameData() {
 
 // Clear the game data and local storage
 function clearGameData() {
+  localStorage.removeItem("gameData");
+  removeAllItemsFromInventory();
+
   gameData = {
     player: {
       wcXp: 0,
@@ -31,8 +34,7 @@ function clearGameData() {
       inventory: {},
     },
   };
-  localStorage.removeItem("gameData");
-  displayInventory();
+  getInventoryItems();
   updateLoadedGameUI();
   location.reload();
 }
